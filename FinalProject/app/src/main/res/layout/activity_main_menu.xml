@@ -1,19 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.azwar.finalproject.MainMenuActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="32dp"
+        android:textAlignment="center"
+        android:text="Arisan Barang"
+        android:textStyle="bold"
+        android:textSize="28sp"/>
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Untuk kebutuhan rumah tangga Anda"/>
+
+    <Button
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:background="@drawable/orangeripple"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:textSize="16sp"
+        android:text="lihat katalog"
+        android:onClick="lihatKatalog"/>
+
+    <Button
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_gravity="center"
+        android:background="@drawable/orangeripple"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:text="daftar kelompok arisan"
+        android:onClick="daftarKelompokArisan"/>
+
+    <Button
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_gravity="center"
+        android:background="@drawable/orangeripple"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:text="menu ketua arisan"
+        android:onClick="menuKetuaArisan"/>
+
+</LinearLayout>
