@@ -20,7 +20,9 @@
             android:layout_weight="0.8"
             android:layout_marginLeft="8dp"
             android:hint="Masukkan nama atau kode barang"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:textColor="@color/primaryText"
+            android:textColorHint="@color/hintText"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="32dp"
