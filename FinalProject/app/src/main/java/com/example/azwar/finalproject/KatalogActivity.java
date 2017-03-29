@@ -35,4 +35,9 @@ public class KatalogActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
+
+    public void cari(View view){
+        Intent intent = new Intent(this,HasilPencarianActivity.class);
+        startActivity(intent);
+    }
 }

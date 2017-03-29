@@ -31,6 +31,10 @@
             android:name=".KategoriActivity"
             android:label="Kategori"
             android:parentActivityName=".KatalogActivity" />
+        <activity
+            android:name=".HasilPencarianActivity"
+            android:label="Hasil Pencarian"
+            android:parentActivityName=".KatalogActivity"></activity>
     </application>
 
 </manifest>
