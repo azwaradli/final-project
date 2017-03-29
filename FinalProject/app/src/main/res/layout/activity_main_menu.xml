@@ -14,13 +14,15 @@
         android:textAlignment="center"
         android:text="Arisan Barang"
         android:textStyle="bold"
-        android:textSize="28sp"/>
+        android:textSize="28sp"
+        android:textColor="@color/primaryText"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="Untuk kebutuhan rumah tangga Anda"/>
+        android:text="Untuk kebutuhan rumah tangga Anda"
+        android:textColor="@color/secondaryText"/>
 
     <Button
         android:layout_width="272dp"
@@ -31,10 +33,9 @@
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
         android:background="@drawable/orangeripple"
-        android:textColor="@android:color/white"
         android:layout_gravity="center"
-        android:textSize="16sp"
         android:text="lihat katalog"
+        android:textColor="@color/primaryText"
         android:onClick="lihatKatalog"/>
 
     <Button
@@ -47,9 +48,8 @@
         android:paddingRight="30dp"
         android:layout_gravity="center"
         android:background="@drawable/orangeripple"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
         android:text="daftar kelompok arisan"
+        android:textColor="@color/primaryText"
         android:onClick="daftarKelompokArisan"/>
 
     <Button
@@ -62,9 +62,8 @@
         android:paddingRight="30dp"
         android:layout_gravity="center"
         android:background="@drawable/orangeripple"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
         android:text="menu ketua arisan"
+        android:textColor="@color/primaryText"
         android:onClick="menuKetuaArisan"/>
 
 </LinearLayout>

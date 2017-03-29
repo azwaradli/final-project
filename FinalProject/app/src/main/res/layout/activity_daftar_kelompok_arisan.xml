@@ -5,36 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.azwar.finalproject.DaftarKetuaArisanActivity">
+    tools:context="com.example.azwar.finalproject.DaftarKelompokArisanActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:background="@drawable/progressborder">
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="24dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="12sp"
             android:gravity="center"
-            android:background="@drawable/progressborder"
-            android:text="Pilih Barang" />
+            android:text="Pilih Barang"
+            android:textColor="@color/primaryText"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="24dp"
             android:layout_weight="1"
             android:textSize="12sp"
             android:gravity="center"
-            android:background="@drawable/progressborder"
-            android:text="Isi Alamat"/>
+            android:textColor="@color/hintText"
+            android:text="Isi Alamat" />
         <TextView
             android:layout_width="0dp"
             android:layout_height="24dp"
             android:layout_weight="1"
             android:textSize="12sp"
             android:gravity="center"
-            android:background="@drawable/progressborder"
+            android:textColor="@color/hintText"
             android:text="Detail Arisan"/>
         <TextView
             android:layout_width="0dp"
@@ -42,17 +45,18 @@
             android:layout_weight="1"
             android:textSize="12sp"
             android:gravity="center"
-            android:background="@drawable/progressborder"
+            android:textColor="@color/hintText"
             android:text="Konfirmasi"/>
     </LinearLayout>
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:paddingLeft="96dp"
         android:text="Pilih Periode"
-        android:textColor="@color/secondaryText"/>
+        android:textColor="@color/primaryText" />
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -62,14 +66,20 @@
         android:gravity="center">
 
         <RadioButton
+            android:id="@+id/radio_mingguan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-            android:text="Mingguan"/>
+            android:text="Mingguan"
+            android:textColor="@color/secondaryText"
+            android:onClick="onRadioButtonClicked"/>
         <RadioButton
+            android:id="@+id/radio_bulanan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bulanan"/>
+            android:text="Bulanan"
+            android:textColor="@color/secondaryText"
+            android:onClick="onRadioButtonClicked"/>
     </RadioGroup>
 
     <TextView
@@ -78,11 +88,11 @@
         android:layout_marginTop="12dp"
         android:paddingLeft="96dp"
         android:text="Pilih Jumlah Anggota"
-        android:textColor="@color/secondaryText"/>
+        android:textColor="@color/primaryText"/>
 
     <Spinner
         android:id="@+id/anggota_spinner"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_gravity="center"/>
@@ -90,7 +100,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:background="@color/softgrey"/>
 
     <LinearLayout
@@ -104,10 +114,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="32dp"
-            android:text="Anggota 1"/>
+            android:text="Anggota 1"
+            android:textColor="@color/primaryText"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
             android:hint="Nama"
@@ -115,8 +127,10 @@
             android:textSize="14sp"
             android:paddingLeft="8dp"/>
         <EditText
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
             android:hint="No. HP"
@@ -126,11 +140,12 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
             android:background="@drawable/orangeripple"
-            android:text="pilih barang"/>
+            android:text="pilih barang"
+            android:onClick="pilihBarang"/>
     </LinearLayout>
 
 </LinearLayout>

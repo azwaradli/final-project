@@ -18,15 +18,19 @@
         <activity
             android:name=".KatalogActivity"
             android:label="Katalog Arisan"
-            android:parentActivityName=".MainMenuActivity"/>
+            android:parentActivityName=".MainMenuActivity" />
         <activity
-            android:name=".DaftarKetuaArisanActivity"
+            android:name=".DaftarKelompokArisanActivity"
             android:label="Daftar Kelompok Arisan"
-            android:parentActivityName=".MainMenuActivity"/>
+            android:parentActivityName=".MainMenuActivity" />
         <activity
             android:name=".MenuKetuaArisanActivity"
             android:label="Menu Ketua Arisan"
-            android:parentActivityName=".MainMenuActivity"/>
+            android:parentActivityName=".MainMenuActivity" />
+        <activity
+            android:name=".KategoriActivity"
+            android:label="Kategori"
+            android:parentActivityName=".KatalogActivity" />
     </application>
 
 </manifest>
