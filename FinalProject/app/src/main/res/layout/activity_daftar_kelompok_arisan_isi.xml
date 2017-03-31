@@ -138,13 +138,44 @@
                 android:textColorHint="@color/hintText"
                 android:textSize="14sp"
                 android:paddingLeft="8dp"/>
-            <Button
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/orangeripple"
-                android:text="pilih barang"
-                android:onClick="pilihBarang"/>
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Barang"
+                        android:textColor="@color/primaryText"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 110.000"
+                        android:textColor="@color/secondaryText"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cicilan Rp 22.000/bulan"
+                        android:textColor="@color/secondaryText"/>
+                </LinearLayout>
+                <Button
+                    android:layout_width="64dp"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="24dp"
+                    android:background="@drawable/orangeripple"
+                    android:text="ganti"
+                    android:textSize="12sp"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
 </ScrollView>

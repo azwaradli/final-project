@@ -34,7 +34,15 @@
         <activity
             android:name=".HasilPencarianActivity"
             android:label="Hasil Pencarian"
-            android:parentActivityName=".KatalogActivity"></activity>
+            android:parentActivityName=".KatalogActivity" />
+        <activity
+            android:name=".DetailBarangActivity"
+            android:label="Detail Barang"
+            android:parentActivityName=".KategoriActivity" />
+        <activity
+            android:name=".DaftarKelompokArisanIsiActivity"
+            android:label="Daftar Kelompok Arisan"
+            android:parentActivityName=".MainMenuActivity"/>
     </application>
 
 </manifest>

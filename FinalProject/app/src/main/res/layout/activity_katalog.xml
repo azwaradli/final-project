@@ -72,5 +72,4 @@
             android:onClick="kategori"
             android:tag="Peralatan Masak"/>
     </LinearLayout>
-
 </LinearLayout>

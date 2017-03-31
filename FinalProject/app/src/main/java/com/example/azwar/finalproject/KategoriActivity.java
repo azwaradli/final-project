@@ -19,4 +19,9 @@ public class KategoriActivity extends AppCompatActivity {
         ActionBar toolbar = getSupportActionBar();
         toolbar.setTitle(message);
     }
+
+    public void detailBarang(View view){
+        Intent intent = new Intent(this, DetailBarangActivity.class);
+        startActivity(intent);
+    }
 }

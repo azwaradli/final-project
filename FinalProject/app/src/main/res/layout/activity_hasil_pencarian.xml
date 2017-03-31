@@ -68,7 +68,8 @@
             android:layout_marginRight="16dp"
             android:padding="16dp"
             android:clickable="true"
-            android:background="@drawable/cardholderripple">
+            android:background="@drawable/cardholderripple"
+            android:onClick="detailBarang">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -102,7 +103,8 @@
             android:layout_marginRight="16dp"
             android:padding="16dp"
             android:clickable="true"
-            android:background="@drawable/cardholderripple">
+            android:background="@drawable/cardholderripple"
+            android:onClick="detailBarang">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
