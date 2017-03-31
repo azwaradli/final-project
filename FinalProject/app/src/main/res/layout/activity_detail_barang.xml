@@ -54,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:layout_marginLeft="24dp">
         <TextView
             android:layout_width="wrap_content"
@@ -66,13 +66,27 @@
             android:text="Kode produk EDX12321"/>
     </LinearLayout>
     <View
+        android:id="@+id/garis"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
         android:background="@color/softgrey"/>
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_below="@id/garis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:scrollbars="horizontal"
+            app:tabGravity="center"/>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tab_layout"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,5 +95,4 @@
             android:text="pilih barang"
             android:onClick="pilihBarang"/>
     </RelativeLayout>
-
 </LinearLayout>
