@@ -1,13 +1,38 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="none"
     tools:context="com.example.azwar.finalproject.InformasiProdukFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="informasi" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deskripsi"
+            android:textColor="@color/primaryText"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Cupcake ipsum dolor sit amet tootsie roll oat cake. Cotton candy wafer croissant fruitcake cupcake candy tiramisu jelly. Chocolate gummi bears cookie. Cotton candy sesame snaps tootsie roll sesame snaps lollipop dragée halvah danish. Caramels bonbon dragée cotton candy candy canes jujubes chocolate jelly jelly beans. Muffin icing marzipan lollipop."/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Spesifikasi"
+            android:textColor="@color/primaryText"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Cupcake ipsum dolor sit amet tootsie roll oat cake. Cotton candy wafer croissant fruitcake cupcake candy tiramisu jelly. Chocolate gummi bears cookie. Cotton candy sesame snaps tootsie roll sesame snaps lollipop dragée halvah danish. Caramels bonbon dragée cotton candy candy canes jujubes chocolate jelly jelly beans. Muffin icing marzipan lollipop."/>
+    </LinearLayout>
 
-</FrameLayout>
+</ScrollView>

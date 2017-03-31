@@ -32,8 +32,7 @@ public class DetailBarangActivity extends AppCompatActivity {
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                tab.getPosition();
-                tab.getText();
+                viewPager.setCurrentItem(tab.getPosition());
             }
 
             @Override
