@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="none"
     tools:context="com.example.azwar.finalproject.TanyaProdukFragment">
 
     <LinearLayout
@@ -32,7 +33,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nama Pengulas"
+                        android:text="Nama Penanya"
                         android:textColor="@color/primaryText" />
 
                     <TextView
@@ -42,13 +43,44 @@
                         android:text="minggu lalu" />
 
                     <TextView
+                        android:id="@+id/textView2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Icing dessert cupcake brownie sweet roll macaroon. Tart pie candy pastry gummies apple pie icing chocolate bar. Apple pie donut biscuit lemon drops."
                         android:textColor="@color/primaryText" />
                 </LinearLayout>
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:paddingRight="8dp">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@mipmap/ic_launcher"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="12dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Admin"
+                            android:textColor="@color/primaryText"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3 hari lalu"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textColor="@color/primaryText"
+                            android:text="Donut apple pie carrot cake donut chocolate bar sesame snaps caramels tootsie roll carrot cake. Oat cake marshmallow fruitcake fruitcake gummies liquorice. Tiramisu muffin cake pastry."/>
+                    </LinearLayout>
+                </LinearLayout>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -78,7 +110,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nama Pengulas"
+                        android:text="Nama Penanya"
                         android:textColor="@color/primaryText" />
 
                     <TextView
@@ -125,7 +157,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nama Pengulas"
+                        android:text="Nama Penanya"
                         android:textColor="@color/primaryText" />
 
                     <TextView

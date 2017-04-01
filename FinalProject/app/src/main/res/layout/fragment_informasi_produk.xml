@@ -71,8 +71,12 @@
                     android:layout_height="wrap_content"
                     android:text="Kode produk EDX12321"/>
             </LinearLayout>
-
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/softgrey"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
