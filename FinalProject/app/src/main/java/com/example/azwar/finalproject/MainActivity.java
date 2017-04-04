@@ -2,6 +2,10 @@ package com.example.azwar.finalproject;
 
 import android.content.Intent;
 import android.support.annotation.IdRes;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,11 +28,17 @@ public class MainActivity extends AppCompatActivity {
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
-
+                Fragment fragment = null;
                 if (tabId == R.id.tab_katalog) {
-                    // The tab with id R.id.tab_favorites was selected,
-                    // change your content accordingly.
+                    fragment = new KatalogFragment();
                 }
+                else if (tabId == R.id.tab_arisan) {
+                    fragment = new ArisanFragment();
+                }
+                FragmentManager manager = getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.replace(R.id.fragmentContainer, fragment);
+                transaction.commit();
             }
         });
     }
@@ -41,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cari(View view){
-        Intent intent = new Intent(this,HasilPencarianActivity.class);
+        Intent intent = new Intent(this, HasilPencarianActivity.class);
         startActivity(intent);
     }
 }
