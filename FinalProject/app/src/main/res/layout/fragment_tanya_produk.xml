@@ -34,6 +34,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nama Penanya"
+                        android:textStyle="bold"
                         android:textColor="@color/primaryText" />
 
                     <TextView
@@ -68,6 +69,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Admin"
+                            android:textStyle="bold"
                             android:textColor="@color/primaryText"/>
                         <TextView
                             android:layout_width="wrap_content"
@@ -111,6 +113,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nama Penanya"
+                        android:textStyle="bold"
                         android:textColor="@color/primaryText" />
 
                     <TextView
@@ -158,6 +161,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nama Penanya"
+                        android:textStyle="bold"
                         android:textColor="@color/primaryText" />
 
                     <TextView

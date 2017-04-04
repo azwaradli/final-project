@@ -8,40 +8,32 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainMenuActivity">
+        <activity
+            android:name=".MainActivity"
+            android:label="Arisan Barang">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".KatalogActivity"
-            android:label="Katalog Arisan"
-            android:parentActivityName=".MainMenuActivity" />
-        <activity
             android:name=".DaftarKelompokArisanActivity"
-            android:label="Daftar Kelompok Arisan"
-            android:parentActivityName=".MainMenuActivity" />
-        <activity
-            android:name=".MenuKetuaArisanActivity"
-            android:label="Menu Ketua Arisan"
-            android:parentActivityName=".MainMenuActivity" />
+            android:label="Daftar Kelompok Arisan" />
         <activity
             android:name=".KategoriActivity"
             android:label="Kategori"
-            android:parentActivityName=".KatalogActivity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".HasilPencarianActivity"
             android:label="Hasil Pencarian"
-            android:parentActivityName=".KatalogActivity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".DetailBarangActivity"
             android:label="Detail Barang"
             android:parentActivityName=".KategoriActivity" />
         <activity
             android:name=".DaftarKelompokArisanIsiActivity"
-            android:label="Daftar Kelompok Arisan"
-            android:parentActivityName=".MainMenuActivity"/>
+            android:label="Daftar Kelompok Arisan" />
     </application>
 
 </manifest>

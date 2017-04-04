@@ -5,13 +5,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 /**
- * Created by Azwar on 3/31/2017.
+ * Created by Azwar on 4/4/2017.
  */
 
-public class PagerAdapter extends FragmentStatePagerAdapter {
+public class MainPagerAdapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;
 
-    public PagerAdapter(FragmentManager fm, int NumOfTabs) {
+    public MainPagerAdapter(FragmentManager fm, int NumOfTabs){
         super(fm);
         this.mNumOfTabs = NumOfTabs;
     }
@@ -21,14 +21,11 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                InformasiProdukFragment informasiTab = new InformasiProdukFragment();
-                return informasiTab;
+                KatalogFragment katalogTab = new KatalogFragment();
+                return katalogTab;
             case 1:
-                UlasanProdukFragment ulasanTab = new UlasanProdukFragment();
-                return ulasanTab;
-            case 2:
-                TanyaProdukFragment tanyaTab = new TanyaProdukFragment();
-                return tanyaTab;
+                ArisanFragment arisanTab = new ArisanFragment();
+                return arisanTab;
             default:
                 return null;
         }

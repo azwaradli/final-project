@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ButtonBarLayout;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
@@ -19,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class DaftarKelompokArisanActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -42,7 +40,7 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
     }
 
     public void pilihBarang(View view){
-        Intent intent = new Intent(this, KatalogActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
@@ -93,7 +91,7 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
 
             EditText nama = new EditText(this);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.topMargin = convertDPtoPixels(8,this);
+            params.topMargin = convertDPtoPixels(16,this);
             nama.setLayoutParams(params);
             nama.setPadding(convertDPtoPixels(8, this), convertDPtoPixels(0, this), convertDPtoPixels(0, this), convertDPtoPixels(12, this));
             nama.setHint("Nama");
@@ -111,13 +109,14 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
 
             Button button = new Button(this);
             LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            buttonParams.topMargin = convertDPtoPixels(8,this);
+            buttonParams.topMargin = convertDPtoPixels(12,this);
             button.setText("pilih barang");
+            button.setTextColor(Color.WHITE);
             button.setBackground(ContextCompat.getDrawable(this, R.drawable.orangeripple));
             button.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(DaftarKelompokArisanActivity.this, KatalogActivity.class);
+                    Intent intent = new Intent(DaftarKelompokArisanActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
             });

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <tabs xmlns:android="http://schemas.android.com/apk/res/android">
     <tab
-        id="@+id/tab_favorites"
+        id="@+id/tab_katalog"
         icon="@drawable/ic_katalog"
         title="Katalog" />
     <tab
-        id="@+id/tab_nearby"
+        id="@+id/tab_arisan"
         icon="@drawable/ic_arisan"
-        title="Nearby" />
+        title="Arisan" />
 </tabs>

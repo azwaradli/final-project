@@ -14,7 +14,7 @@ public class KategoriActivity extends AppCompatActivity {
         setContentView(R.layout.activity_kategori);
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra(KatalogActivity.EXTRA_MESSAGE);
+        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
         ActionBar toolbar = getSupportActionBar();
         toolbar.setTitle(message);
