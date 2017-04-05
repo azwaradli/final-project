@@ -2,6 +2,7 @@ package com.example.azwar.finalproject;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -24,10 +25,7 @@ public class DetailBarangActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Ulasan"));
         tabLayout.addTab(tabLayout.newTab().setText("Tanya"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        /*PagerTabStrip pagerTabStrip = (PagerTabStrip) findViewById(R.id.detail_barang_tab_layout);
-        pagerTabStrip.setDrawFullUnderline(true);
-        pagerTabStrip.setTabIndicatorColor(R.color.colorPrimary);*/
+        tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.colorPrimary));
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.detail_barang_pager);
         final DetailBarangPagerAdapter adapter = new DetailBarangPagerAdapter
