@@ -52,4 +52,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HasilPencarianActivity.class);
         startActivity(intent);
     }
+
+    public void buatKelompokArisan(View view){
+        Intent intent = new Intent(this, DaftarKelompokArisanActivity.class);
+        startActivity(intent);
+    }
 }

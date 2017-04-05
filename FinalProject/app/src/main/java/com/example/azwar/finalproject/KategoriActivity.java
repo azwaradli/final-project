@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 public class KategoriActivity extends AppCompatActivity {
@@ -18,6 +19,11 @@ public class KategoriActivity extends AppCompatActivity {
 
         ActionBar toolbar = getSupportActionBar();
         toolbar.setTitle(message);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        finish();
+        return true;
     }
 
     public void detailBarang(View view){

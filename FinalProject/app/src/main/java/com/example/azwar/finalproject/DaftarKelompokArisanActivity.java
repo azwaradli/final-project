@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,7 +21,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class DaftarKelompokArisanActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-
+    public final static String EXTRA_MESSAGE = "com.example.finalproject.MESSAGE";
     private Spinner spinner;
 
     @Override
@@ -37,11 +38,6 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.anggota_bulanan_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-    }
-
-    public void pilihBarang(View view){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 
     public void onRadioButtonClicked(View view){
@@ -69,6 +65,11 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
         DisplayMetrics metrics = resources.getDisplayMetrics();
         float _px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, px, metrics);
         return (int) _px;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        finish();
+        return true;
     }
 
     public void onItemSelected(AdapterView<?> parent, View view,
@@ -116,7 +117,7 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
             button.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(DaftarKelompokArisanActivity.this, MainActivity.class);
+                    Intent intent = new Intent(DaftarKelompokArisanActivity.this, KatalogActivity.class);
                     startActivity(intent);
                 }
             });
