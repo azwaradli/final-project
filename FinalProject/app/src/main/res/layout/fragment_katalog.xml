@@ -16,7 +16,6 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:gravity="center">
-
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -36,7 +35,6 @@
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:onClick="cari"/>
-
         </LinearLayout>
 
         <LinearLayout

@@ -2,6 +2,7 @@ package com.example.azwar.finalproject;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,14 +18,18 @@ public class DetailBarangActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_barang);
 
-        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout = (TabLayout) findViewById(R.id.detail_barang_tab_layout);
         tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
         tabLayout.addTab(tabLayout.newTab().setText("Informasi"));
         tabLayout.addTab(tabLayout.newTab().setText("Ulasan"));
         tabLayout.addTab(tabLayout.newTab().setText("Tanya"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        /*PagerTabStrip pagerTabStrip = (PagerTabStrip) findViewById(R.id.detail_barang_tab_layout);
+        pagerTabStrip.setDrawFullUnderline(true);
+        pagerTabStrip.setTabIndicatorColor(R.color.colorPrimary);*/
+
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.detail_barang_pager);
         final DetailBarangPagerAdapter adapter = new DetailBarangPagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);

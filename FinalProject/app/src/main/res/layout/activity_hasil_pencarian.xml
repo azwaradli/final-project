@@ -16,6 +16,11 @@
         android:layout_marginRight="16dp"
         android:gravity="center">
 
+        <LinearLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_width="0px"
+            android:layout_height="0px"/>
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"

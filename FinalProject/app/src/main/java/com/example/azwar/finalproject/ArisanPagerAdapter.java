@@ -8,10 +8,10 @@ import android.support.v4.app.FragmentStatePagerAdapter;
  * Created by Azwar on 4/4/2017.
  */
 
-public class MainPagerAdapter extends FragmentStatePagerAdapter {
+public class ArisanPagerAdapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;
 
-    public MainPagerAdapter(FragmentManager fm, int NumOfTabs){
+    public ArisanPagerAdapter(FragmentManager fm, int NumOfTabs){
         super(fm);
         this.mNumOfTabs = NumOfTabs;
     }
@@ -21,11 +21,11 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                KatalogFragment katalogTab = new KatalogFragment();
-                return katalogTab;
+                ArisanSayaFragment arisanSayaTab = new ArisanSayaFragment();
+                return arisanSayaTab;
             case 1:
-                ArisanFragment arisanTab = new ArisanFragment();
-                return arisanTab;
+                BinaanSayaFragment binaanSayaTab = new BinaanSayaFragment();
+                return binaanSayaTab;
             default:
                 return null;
         }
