@@ -107,50 +107,10 @@
             android:layout_marginTop="16dp"
             android:background="@color/softgrey"/>
 
-        <LinearLayout
-            android:id="@+id/anggota_section"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/anggotaRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Anggota 1"
-                android:textColor="@color/primaryText"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="Nama"
-                android:textColorHint="@color/hintText"
-                android:textSize="14sp"
-                android:paddingLeft="8dp"/>
-            <EditText
-                android:inputType="number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="No. HP"
-                android:textColorHint="@color/hintText"
-                android:textSize="14sp"
-                android:paddingLeft="8dp"/>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/orangeripple"
-                android:text="Pilih Barang"
-                android:textAllCaps="false"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:onClick="pilihBarang"/>
-        </LinearLayout>
+            android:scrollbars="vertical"/>
     </LinearLayout>
 </ScrollView>
