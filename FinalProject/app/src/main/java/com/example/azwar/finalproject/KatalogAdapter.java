@@ -14,6 +14,7 @@ import android.widget.Button;
 public class KatalogAdapter extends RecyclerView.Adapter<KatalogItemView> {
     private String[] katalogNames = new String[] {
         "Produk Terbaru",
+        "Furniture",
         "Peralatan Masak",
         "Peralatan Dapur",
         "Pakaian Pria",
@@ -21,21 +22,20 @@ public class KatalogAdapter extends RecyclerView.Adapter<KatalogItemView> {
         "Sepatu Laki-laki",
         "Sepatu Perempuan",
         "Elektronik Rumah Tangga",
-        "Handphone dan Tablet",
-        "Furniture",
+        "Handphone dan Tablet"
     };
 
     private int[] katalogButtonIcon = {
         R.drawable.ic_gift,
+        R.drawable.ic_furniture,
         R.drawable.ic_alatmasak,
-        R.drawable.ic_gift,
-        R.drawable.ic_alatmasak,
-        R.drawable.ic_gift,
-        R.drawable.ic_alatmasak,
-        R.drawable.ic_gift,
-        R.drawable.ic_alatmasak,
-        R.drawable.ic_gift,
-        R.drawable.ic_alatmasak,
+        R.drawable.ic_dapur,
+        R.drawable.ic_shirt,
+        R.drawable.ic_dress,
+        R.drawable.ic_sepatupria,
+        R.drawable.ic_sepatuwanita,
+        R.drawable.ic_elektronik,
+        R.drawable.ic_phone
     };
 
     @Override

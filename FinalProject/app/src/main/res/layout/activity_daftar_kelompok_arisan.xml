@@ -10,7 +10,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,14 +77,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
                 android:text="Mingguan"
-                android:textColor="@color/secondaryText"
+                android:textColor="@color/primaryText"
                 android:onClick="onRadioButtonClicked"/>
             <RadioButton
                 android:id="@+id/radio_bulanan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bulanan"
-                android:textColor="@color/secondaryText"
+                android:textColor="@color/primaryText"
                 android:onClick="onRadioButtonClicked"/>
         </RadioGroup>
 
@@ -99,7 +101,7 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center" />
 
         <View
             android:layout_width="match_parent"
