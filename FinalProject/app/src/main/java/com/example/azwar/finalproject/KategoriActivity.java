@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 public class KategoriActivity extends AppCompatActivity {
+    String pageID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +18,7 @@ public class KategoriActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        pageID = intent.getStringExtra(KatalogActivity.PAGE_ID);
 
         ActionBar toolbar = getSupportActionBar();
         toolbar.setTitle(message);
@@ -28,6 +31,8 @@ public class KategoriActivity extends AppCompatActivity {
 
     public void detailBarang(View view){
         Intent intent = new Intent(this, DetailBarangActivity.class);
+        intent.putExtra(KatalogActivity.PAGE_ID, pageID);
+        Log.d("hehe",pageID);
         startActivity(intent);
     }
 }

@@ -118,6 +118,7 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(DaftarKelompokArisanActivity.this, KatalogActivity.class);
+                    intent.putExtra(KatalogActivity.PAGE_ID, "daftarKelompokArisanActivity");
                     startActivity(intent);
                 }
             });

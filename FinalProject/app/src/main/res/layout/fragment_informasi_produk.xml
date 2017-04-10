@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="none"
+    android:id="@+id/informasiProdukFragment"
     tools:context="com.example.azwar.finalproject.InformasiProdukFragment">
 
     <LinearLayout
@@ -107,6 +108,7 @@
                 android:text="Cupcake ipsum dolor sit amet tootsie roll oat cake. Cotton candy wafer croissant fruitcake cupcake candy tiramisu jelly. Chocolate gummi bears cookie. Cotton candy sesame snaps tootsie roll sesame snaps lollipop dragée halvah danish. Caramels bonbon dragée cotton candy candy canes jujubes chocolate jelly jelly beans. Muffin icing marzipan lollipop."/>
         </LinearLayout>
         <Button
+            android:id="@+id/pilihBarangButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
