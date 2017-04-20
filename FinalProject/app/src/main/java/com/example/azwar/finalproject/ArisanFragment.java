@@ -30,7 +30,7 @@ public class ArisanFragment extends Fragment {
         tabLayout = (TabLayout) view.findViewById(R.id.arisan_tab_layout);
         tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
         tabLayout.addTab(tabLayout.newTab().setText("Arisan Saya"));
-        tabLayout.addTab(tabLayout.newTab().setText("Binaan Saya"));
+        tabLayout.addTab(tabLayout.newTab().setText("Beranda Arisan"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
 

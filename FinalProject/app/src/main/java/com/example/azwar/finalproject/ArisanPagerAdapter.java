@@ -24,7 +24,7 @@ public class ArisanPagerAdapter extends FragmentStatePagerAdapter {
                 ArisanSayaFragment arisanSayaTab = new ArisanSayaFragment();
                 return arisanSayaTab;
             case 1:
-                BinaanSayaFragment binaanSayaTab = new BinaanSayaFragment();
+                BerandaArisanFragment binaanSayaTab = new BerandaArisanFragment();
                 return binaanSayaTab;
             default:
                 return null;
