@@ -10,6 +10,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.service.notification.StatusBarNotification;
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -68,10 +70,13 @@ public class DatabaseKelompokArisanHandler extends SQLiteOpenHelper {
     public void addKelompokArisan(KelompokArisan kelompokArisan){
         SQLiteDatabase db = this.getWritableDatabase();
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        String date = sdf.format(kelompokArisan.getTanggalMulai());
+
         ContentValues values = new ContentValues();
         values.put(KELOMPOK_ARISAN_NAMA, kelompokArisan.getNama());
         values.put(KELOMPOK_ARISAN_TIPE, kelompokArisan.getTipe());
-        values.put(KELOMPOK_ARISAN_TANGGAL_MULAI, kelompokArisan.getTanggalMulai());
+        values.put(KELOMPOK_ARISAN_TANGGAL_MULAI, date);
         values.put(KELOMPOK_ARISAN_SETORAN, kelompokArisan.getSetoran());
         values.put(KELOMPOK_ARISAN_STATUS, kelompokArisan.getStatus());
         values.put(KELOMPOK_ARISAN_BONUS, kelompokArisan.getBonus());
@@ -80,7 +85,7 @@ public class DatabaseKelompokArisanHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public KelompokArisan getKelompokArisan(int id){
+    public KelompokArisan getKelompokArisan(int id) throws ParseException {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(
@@ -101,17 +106,20 @@ public class DatabaseKelompokArisanHandler extends SQLiteOpenHelper {
                 null
         );
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
         KelompokArisan kelompokArisan = null;
+
         if (kelompokArisan != null){
             cursor.moveToFirst();
             kelompokArisan = new KelompokArisan(
                     Integer.parseInt(cursor.getString(0)),
                     cursor.getString(1),
                     cursor.getString(2),
-                    java.sql.Date.valueOf(cursor.getString(3)),
-                    Intent.parseIntent(cursor.getString(4)),
+                    sdf.parse(cursor.getString(3)),
+                    Integer.parseInt(cursor.getString(4)),
                     cursor.getString(5),
                     Integer.parseInt(cursor.getString(6))
+            );
         }
         cursor.close();
 
@@ -126,20 +134,21 @@ public class DatabaseKelompokArisanHandler extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 
         if(cursor.moveToFirst()){
             do{
                 KelompokArisan kelompokArisan = new KelompokArisan();
                 kelompokArisan.setNama(cursor.getString(1));
                 kelompokArisan.setTipe(cursor.getString(2));
-                kelompokArisan.setTanggalMulai(java.sql.Date.valueOf(cursor.getString(3)));
-                kelompokArisan.setSetoran(Intent.parseIntent(cursor.getString(4)));
+                kelompokArisan.setTanggalMulai(sdf.parse(cursor.getString(3)));
+                kelompokArisan.setSetoran(Integer.parseInt(cursor.getString(4)));
                 kelompokArisan.setStatus(cursor.getString(5));
                 kelompokArisan.setBonus(Integer.parseInt(cursor.getString(6)));
 
                 kelompokArisanList.add(kelompokArisan);
             }
-            while (cursor.moveToNext())
+            while (cursor.moveToNext());
         }
         cursor.close();
 
@@ -159,10 +168,13 @@ public class DatabaseKelompokArisanHandler extends SQLiteOpenHelper {
     public int updateKelompokArisan(KelompokArisan kelompokArisan){
         SQLiteDatabase db = this.getWritableDatabase();
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        String date = sdf.format(kelompokArisan.getTanggalMulai());
+
         ContentValues values = new ContentValues();
         values.put(KELOMPOK_ARISAN_NAMA, kelompokArisan.getNama());
         values.put(KELOMPOK_ARISAN_TIPE, kelompokArisan.getTipe());
-        values.put(KELOMPOK_ARISAN_TANGGAL_MULAI, kelompokArisan.getTanggalMulai());
+        values.put(KELOMPOK_ARISAN_TANGGAL_MULAI, date);
         values.put(KELOMPOK_ARISAN_SETORAN, kelompokArisan.getSetoran());
         values.put(KELOMPOK_ARISAN_STATUS, kelompokArisan.getStatus());
         values.put(KELOMPOK_ARISAN_BONUS, kelompokArisan.getBonus());
