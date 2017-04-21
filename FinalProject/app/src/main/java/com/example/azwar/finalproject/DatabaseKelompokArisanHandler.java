@@ -46,12 +46,12 @@ public class DatabaseKelompokArisanHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_KELOMPOK_ARISAN_TABLE = "CREATE TABLE " + TABLE_KELOMPOK_ARISAN + "("
-                + KELOMPOK_ARISAN_ID + " INTEGER PRIMARY KEY, "
+                + KELOMPOK_ARISAN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
                 + KELOMPOK_ARISAN_NAMA + " TEXT, "
                 + KELOMPOK_ARISAN_TIPE + " TEXT, "
                 + KELOMPOK_ARISAN_TANGGAL_MULAI + " DATE, "
                 + KELOMPOK_ARISAN_SETORAN + " INT, "
-                + KELOMPOK_ARISAN_STATUS + " STRING, "
+                + KELOMPOK_ARISAN_STATUS + " TEXT, "
                 + KELOMPOK_ARISAN_BONUS + " INT, "
                 + ")";
         db.execSQL(CREATE_KELOMPOK_ARISAN_TABLE);
@@ -126,7 +126,7 @@ public class DatabaseKelompokArisanHandler extends SQLiteOpenHelper {
         return kelompokArisan;
     }
 
-    public List<KelompokArisan> getAllKelompokArisan(){
+    public List<KelompokArisan> getAllKelompokArisan() throws ParseException {
         List<KelompokArisan> kelompokArisanList = new ArrayList<KelompokArisan>();
 
         // select all query
