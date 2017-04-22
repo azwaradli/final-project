@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.service.notification.StatusBarNotification;
+import android.util.Log;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -346,17 +347,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void addBarang(Barang barang){
+    public long addBarang(Barang barang){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAMA, barang.getNama());
+        values.put(KEY_HARGA, barang.getHarga());
         values.put(KEY_KODE_PRODUK, barang.getKodeProduk());
         values.put(KEY_DESKRIPSI, barang.getDeskripsi());
         values.put(KEY_SPESIFIKASI, barang.getSpesifikasi());
 
-        db.insert(TABLE_BARANG, null, values);
+        long id = db.insert(TABLE_BARANG, null, values);
         db.close();
+
+        return id;
     }
 
     public Barang getBarang(int id) throws ParseException {
@@ -401,7 +405,34 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         List<Barang> barangList = new ArrayList<Barang>();
 
         // select all query
-        String selectQuery = "SELECT * FROM + " + TABLE_BARANG;
+        String selectQuery = "SELECT * FROM " + TABLE_BARANG;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                Barang barang = new Barang();
+                barang.setNama(cursor.getString(1));
+                barang.setHarga(Integer.parseInt(cursor.getString(2)));
+                barang.setKodeProduk(cursor.getString(3));
+                barang.setDeskripsi(cursor.getString(4));
+                barang.setSpesifikasi(cursor.getString(5));
+
+                barangList.add(barang);
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return barangList;
+    }
+
+    public List<Barang> getAllBarang(String tipe) throws ParseException {
+        List<Barang> barangList = new ArrayList<Barang>();
+
+        // select all query
+        String selectQuery = "SELECT * FROM " + TABLE_BARANG + " WHERE KODE_PRODUK LIKE '%" + tipe +"%'";
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -460,5 +491,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 new String[] {String.valueOf(barang.getId())}
         );
         db.close();
+    }
+
+    public void deleteAllBarang(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_BARANG, null, null);
+        db.close();
+    }
+
+    public void closeDB() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (db != null && db.isOpen())
+            db.close();
     }
 }
