@@ -47,6 +47,7 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
 
         mRecyclerView = (RecyclerView) findViewById(R.id.anggotaRecyclerView);
         mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setNestedScrollingEnabled(false);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new AnggotaAdapter();

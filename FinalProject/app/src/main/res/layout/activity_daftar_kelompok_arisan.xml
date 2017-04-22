@@ -13,47 +13,47 @@
         android:orientation="vertical"
         android:focusable="true"
         android:focusableInTouchMode="true">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:background="@drawable/progressborder">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:paddingTop="4dp"-->
+            <!--android:paddingBottom="4dp"-->
+            <!--android:background="@drawable/progressborder">-->
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="12sp"
-                android:gravity="center"
-                android:text="Pilih Barang"
-                android:textColor="@color/primaryText"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="24dp"
-                android:layout_weight="1"
-                android:textSize="12sp"
-                android:gravity="center"
-                android:textColor="@color/hintText"
-                android:text="Isi Alamat" />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="24dp"
-                android:layout_weight="1"
-                android:textSize="12sp"
-                android:gravity="center"
-                android:textColor="@color/hintText"
-                android:text="Detail Arisan"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="24dp"
-                android:layout_weight="1"
-                android:textSize="12sp"
-                android:gravity="center"
-                android:textColor="@color/hintText"
-                android:text="Konfirmasi"/>
-        </LinearLayout>
+            <!--<TextView-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:textSize="12sp"-->
+                <!--android:gravity="center"-->
+                <!--android:text="Pilih Barang"-->
+                <!--android:textColor="@color/primaryText"/>-->
+            <!--<TextView-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="24dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:textSize="12sp"-->
+                <!--android:gravity="center"-->
+                <!--android:textColor="@color/hintText"-->
+                <!--android:text="Isi Alamat" />-->
+            <!--<TextView-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="24dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:textSize="12sp"-->
+                <!--android:gravity="center"-->
+                <!--android:textColor="@color/hintText"-->
+                <!--android:text="Detail Arisan"/>-->
+            <!--<TextView-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="24dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:textSize="12sp"-->
+                <!--android:gravity="center"-->
+                <!--android:textColor="@color/hintText"-->
+                <!--android:text="Konfirmasi"/>-->
+        <!--</LinearLayout>-->
 
         <TextView
             android:id="@+id/textView"
@@ -109,10 +109,14 @@
             android:layout_marginTop="16dp"
             android:background="@color/softgrey"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/anggotaRecyclerView"
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="vertical"/>
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/anggotaRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"/>
+        </android.support.v4.widget.NestedScrollView>
     </LinearLayout>
 </ScrollView>
