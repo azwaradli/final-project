@@ -30,6 +30,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // Table Names
     private static final String TABLE_KELOMPOK_ARISAN = "kelompok_arisan";
     private static final String TABLE_ANGGOTA_ARISAN = "anggota_arisan";
+    private static final String TABLE_BARANG = "barang";
 
     // Common column names
     private static final String KEY_ID = "id";
@@ -47,6 +48,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_ALAMAT = "alamat";
     private static final String KEY_KELOMPOK_ARISAN_ID = "kelompok_arisan_id";
 
+    // BARANG Table - column names
+    private static final String KEY_HARGA = "harga";
+    private static final String KEY_KODE_PRODUK = "kode_produk";
+    private static final String KEY_DESKRIPSI = "deskripsi";
+    private static final String KEY_SPESIFIKASI = "spesifikasi";
+
     private static final String CREATE_KELOMPOK_ARISAN_TABLE = "CREATE TABLE " + TABLE_KELOMPOK_ARISAN + "("
             + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
             + KEY_NAMA + " TEXT, "
@@ -54,7 +61,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + KEY_TANGGAL_MULAI + " DATE, "
             + KEY_SETORAN + " INT, "
             + KEY_STATUS + " TEXT, "
-            + KEY_BONUS + " INT, "
+            + KEY_BONUS + " INT"
             + ")";
 
     private static final String CREATE_ANGGOTA_ARISAN_TABLE = "CREATE TABLE " + TABLE_ANGGOTA_ARISAN + "("
@@ -62,7 +69,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + KEY_NAMA + " TEXT, "
             + KEY_NO_HP + " INT, "
             + KEY_ALAMAT + " TEXT, "
-            + KEY_KELOMPOK_ARISAN_ID + " INT, "
+            + KEY_KELOMPOK_ARISAN_ID + " INT"
+            + ")";
+
+    private static final String CREATE_BARANG_TABLE = "CREATE TABLE " + TABLE_BARANG + "("
+            + KEY_ID + " INTEGER PRIMARY KEY NOT NULL AUTO INCREMENT, "
+            + KEY_NAMA + " TEXT, "
+            + KEY_HARGA + " INT, "
+            + KEY_KODE_PRODUK + " TEXT, "
+            + KEY_DESKRIPSI + " TEXT, "
+            + KEY_SPESIFIKASI + " TEXT"
             + ")";
 
     public DatabaseHandler(Context context){
@@ -73,6 +89,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_KELOMPOK_ARISAN_TABLE);
         db.execSQL(CREATE_ANGGOTA_ARISAN_TABLE);
+        db.execSQL(CREATE_BARANG_TABLE);
     }
 
     @Override
@@ -80,6 +97,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_KELOMPOK_ARISAN);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ANGGOTA_ARISAN);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_BARANG);
 
         // Create tables again
         onCreate(db);
@@ -324,6 +342,122 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 TABLE_ANGGOTA_ARISAN,
                 KEY_ID + " = ?",
                 new String[] {String.valueOf(anggotaArisan.getId())}
+        );
+        db.close();
+    }
+
+    public void addBarang(Barang barang){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_NAMA, barang.getNama());
+        values.put(KEY_KODE_PRODUK, barang.getKodeProduk());
+        values.put(KEY_DESKRIPSI, barang.getDeskripsi());
+        values.put(KEY_SPESIFIKASI, barang.getSpesifikasi());
+
+        db.insert(TABLE_BARANG, null, values);
+        db.close();
+    }
+
+    public Barang getBarang(int id) throws ParseException {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(
+                TABLE_BARANG,
+                new String[]{
+                        KEY_ID,
+                        KEY_NAMA,
+                        KEY_HARGA,
+                        KEY_KODE_PRODUK,
+                        KEY_DESKRIPSI,
+                        KEY_SPESIFIKASI},
+                KEY_ID + " = ?",
+                new String[] {String.valueOf(id)},
+                null,
+                null,
+                null,
+                null
+        );
+
+        Barang barang = null;
+
+        if (barang != null){
+            cursor.moveToFirst();
+            barang = new Barang(
+                    Integer.parseInt(cursor.getString(0)),
+                    cursor.getString(1),
+                    Integer.parseInt(cursor.getString(2)),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5)
+            );
+        }
+        cursor.close();
+
+        return barang;
+    }
+
+    public List<Barang> getAllBarang() throws ParseException {
+        List<Barang> barangList = new ArrayList<Barang>();
+
+        // select all query
+        String selectQuery = "SELECT * FROM + " + TABLE_BARANG;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                Barang barang = new Barang();
+                barang.setNama(cursor.getString(1));
+                barang.setHarga(Integer.parseInt(cursor.getString(2)));
+                barang.setKodeProduk(cursor.getString(3));
+                barang.setDeskripsi(cursor.getString(4));
+                barang.setSpesifikasi(cursor.getString(5));
+
+                barangList.add(barang);
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return barangList;
+    }
+
+    public int getBarangCount(){
+        String countQuery = "SELECT * FROM " + TABLE_BARANG;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int count = cursor.getCount();
+        cursor.close();
+
+        return count;
+    }
+
+    public int updateBarang(Barang barang){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_NAMA, barang.getNama());
+        values.put(KEY_HARGA, barang.getHarga());
+        values.put(KEY_KODE_PRODUK, barang.getKodeProduk());
+        values.put(KEY_DESKRIPSI, barang.getDeskripsi());
+        values.put(KEY_SPESIFIKASI, barang.getSpesifikasi());
+
+        return db.update(
+                TABLE_BARANG,
+                values,
+                KEY_ID + " ?",
+                new String[] {String.valueOf(barang.getId())}
+        );
+    }
+
+    public void deleteBarang(Barang barang){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(
+                TABLE_BARANG,
+                KEY_ID + " = ?",
+                new String[] {String.valueOf(barang.getId())}
         );
         db.close();
     }
