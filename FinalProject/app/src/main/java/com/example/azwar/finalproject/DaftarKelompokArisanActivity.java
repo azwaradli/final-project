@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
@@ -154,6 +155,8 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
     public void pilihBarang(View view){
         Intent intent = new Intent(DaftarKelompokArisanActivity.this, KatalogActivity.class);
         intent.putExtra(KatalogActivity.PAGE_ID, "daftarKelompokArisanActivity");
+        String idButton = view.getTag().toString();
+        intent.putExtra(EXTRA_MESSAGE, idButton);
         startActivity(intent);
     }
 }

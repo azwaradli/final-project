@@ -38,6 +38,7 @@
             android:textSize="14sp"
             android:paddingLeft="8dp"/>
         <Button
+            android:id="@+id/pilihBarangButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"

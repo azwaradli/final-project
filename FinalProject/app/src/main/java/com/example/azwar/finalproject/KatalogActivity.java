@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -14,6 +15,7 @@ public class KatalogActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private KatalogAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private String idButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class KatalogActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if(intent != null){
             pageID = intent.getStringExtra(PAGE_ID);
+            idButton = intent.getStringExtra(DaftarKelompokArisanActivity.EXTRA_MESSAGE);
         }
 
         mRecyclerView = (RecyclerView) findViewById(R.id.katalogRecyclerView);
@@ -43,6 +46,7 @@ public class KatalogActivity extends AppCompatActivity {
             pageID = "katalogActivity";
         }
         intent.putExtra(PAGE_ID, pageID);
+        intent.putExtra(DaftarKelompokArisanActivity.EXTRA_MESSAGE, idButton);
         startActivity(intent);
     }
 

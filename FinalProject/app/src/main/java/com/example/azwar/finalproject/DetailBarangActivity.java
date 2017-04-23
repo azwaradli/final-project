@@ -19,6 +19,7 @@ public class DetailBarangActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private String message;
     private int idBarang;
+    private String idButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +30,9 @@ public class DetailBarangActivity extends AppCompatActivity {
         if(intent != null){
             message = intent.getStringExtra(KatalogActivity.PAGE_ID);
             idBarang = Integer.parseInt(intent.getStringExtra(KategoriActivity.BARANG_ID));
+            idButton = intent.getStringExtra(DaftarKelompokArisanActivity.EXTRA_MESSAGE);
+            Log.d("button",idButton);
         }
-
 
         tabLayout = (TabLayout) findViewById(R.id.detail_barang_tab_layout);
         tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
@@ -75,7 +77,12 @@ public class DetailBarangActivity extends AppCompatActivity {
     }
 
     public void pilihBarang(View view){
-        Intent intent = new Intent(this, DaftarKelompokArisanIsiActivity.class);
+        Intent intent = new Intent(this, DaftarKelompokArisanActivity.class);
+        DatabaseHandler db = new DatabaseHandler(this);
+
+//        db.addKeranjang();
+
+        db.closeDB();
         startActivity(intent);
     }
 

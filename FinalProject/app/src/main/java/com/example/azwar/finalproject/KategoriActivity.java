@@ -15,7 +15,9 @@ import java.util.List;
 
 public class KategoriActivity extends AppCompatActivity {
     public static final String BARANG_ID = "barangId";
+    String message;
     String pageID;
+    String idButton;
     DatabaseHandler db;
     private RecyclerView mRecyclerView;
     private KategoriAdapter mAdapter;
@@ -27,8 +29,11 @@ public class KategoriActivity extends AppCompatActivity {
         setContentView(R.layout.activity_kategori);
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-        pageID = intent.getStringExtra(KatalogActivity.PAGE_ID);
+        if (intent != null){
+            message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+            pageID = intent.getStringExtra(KatalogActivity.PAGE_ID);
+            idButton = intent.getStringExtra(DaftarKelompokArisanActivity.EXTRA_MESSAGE);
+        }
 
         ActionBar toolbar = getSupportActionBar();
         toolbar.setTitle(message);
@@ -89,8 +94,7 @@ public class KategoriActivity extends AppCompatActivity {
         intent.putExtra(KatalogActivity.PAGE_ID, pageID);
         String idBarang = view.getTag().toString();
         intent.putExtra(BARANG_ID, idBarang);
-        Log.d("hehe",pageID);
-        Log.d("hehe id",idBarang);
+        intent.putExtra(DaftarKelompokArisanActivity.EXTRA_MESSAGE, idButton);
         startActivity(intent);
     }
 }

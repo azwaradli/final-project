@@ -71,7 +71,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + KEY_NAMA + " TEXT, "
             + KEY_NO_HP + " INTEGER, "
             + KEY_ALAMAT + " TEXT, "
-            + KEY_KELOMPOK_ARISAN_ID + " INT"
+            + KEY_KELOMPOK_ARISAN_ID + " INT, "
+            + "FOREIGN KEY (" + KEY_KELOMPOK_ARISAN_ID + ") REFERENCES " + TABLE_KELOMPOK_ARISAN + "(" + KEY_ID + ")"
             + ")";
 
     private static final String CREATE_BARANG_TABLE = "CREATE TABLE " + TABLE_BARANG + "("

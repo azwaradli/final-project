@@ -2,9 +2,11 @@ package com.example.azwar.finalproject;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -33,6 +35,10 @@ public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaItemView> {
     public void onBindViewHolder(AnggotaItemView holder, int position) {
         TextView title = holder.mTitle;
         title.setText("Anggota " + (position+1));
+
+        Log.d("cek",""+position);
+        Button pilihBarangButton = holder.pilihBarangButton;
+        pilihBarangButton.setTag(position);
     }
 
     public void setContentCount(int count) {
