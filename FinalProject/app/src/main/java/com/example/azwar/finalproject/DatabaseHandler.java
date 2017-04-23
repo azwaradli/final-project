@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.LinearGradient;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
 
@@ -60,23 +61,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + KEY_NAMA + " TEXT, "
             + KEY_TIPE + " TEXT, "
             + KEY_TANGGAL_MULAI + " DATE, "
-            + KEY_SETORAN + " INT, "
+            + KEY_SETORAN + " INTEGER, "
             + KEY_STATUS + " TEXT, "
             + KEY_BONUS + " INT"
             + ")";
 
     private static final String CREATE_ANGGOTA_ARISAN_TABLE = "CREATE TABLE " + TABLE_ANGGOTA_ARISAN + "("
-            + KEY_ID + " INTEGER PRIMARY KEY NOT NULL AUTO INCREMENT, "
+            + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
             + KEY_NAMA + " TEXT, "
-            + KEY_NO_HP + " INT, "
+            + KEY_NO_HP + " INTEGER, "
             + KEY_ALAMAT + " TEXT, "
             + KEY_KELOMPOK_ARISAN_ID + " INT"
             + ")";
 
     private static final String CREATE_BARANG_TABLE = "CREATE TABLE " + TABLE_BARANG + "("
-            + KEY_ID + " INTEGER PRIMARY KEY NOT NULL AUTO INCREMENT, "
+            + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
             + KEY_NAMA + " TEXT, "
-            + KEY_HARGA + " INT, "
+            + KEY_HARGA + " INTEGER, "
             + KEY_KODE_PRODUK + " TEXT, "
             + KEY_DESKRIPSI + " TEXT, "
             + KEY_SPESIFIKASI + " TEXT"
@@ -366,7 +367,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public Barang getBarang(int id) throws ParseException {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(
+        String selectQuery = "SELECT * FROM " + TABLE_BARANG + " WHERE "
+                + KEY_ID + " = " + id;
+
+        Log.d("query", selectQuery);
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        /*Cursor cursor = db.query(
                 TABLE_BARANG,
                 new String[]{
                         KEY_ID,
@@ -381,11 +389,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 null,
                 null,
                 null
-        );
+        );*/
 
         Barang barang = null;
 
-        if (barang != null){
+        if (cursor != null){
             cursor.moveToFirst();
             barang = new Barang(
                     Integer.parseInt(cursor.getString(0)),
@@ -413,6 +421,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if(cursor.moveToFirst()){
             do{
                 Barang barang = new Barang();
+                barang.setId(Integer.parseInt(cursor.getString(0)));
                 barang.setNama(cursor.getString(1));
                 barang.setHarga(Integer.parseInt(cursor.getString(2)));
                 barang.setKodeProduk(cursor.getString(3));
@@ -440,6 +449,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if(cursor.moveToFirst()){
             do{
                 Barang barang = new Barang();
+                barang.setId(Integer.parseInt(cursor.getString(0)));
                 barang.setNama(cursor.getString(1));
                 barang.setHarga(Integer.parseInt(cursor.getString(2)));
                 barang.setKodeProduk(cursor.getString(3));

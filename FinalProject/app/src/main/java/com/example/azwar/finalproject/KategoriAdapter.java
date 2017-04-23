@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -37,6 +38,10 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriItemView> {
     public void onBindViewHolder(KategoriItemView holder, int position) {
         if (barangList != null) {
             Log.d("hasil","berhasil");
+            LinearLayout kategoriLayout = holder.kategoriLayout;
+            Log.d("barang id",""+barangList.get(position).getId());
+            kategoriLayout.setTag(barangList.get(position).getId());
+
             TextView kategoriNama = holder.kategoriNama;
             kategoriNama.setText(barangList.get(position).getNama());
 

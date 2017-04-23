@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 public class KatalogActivity extends AppCompatActivity {
-    public final static String PAGE_ID = "pageid";
+    public final static String PAGE_ID = "pageId";
     private String pageID;
     private RecyclerView mRecyclerView;
     private KatalogAdapter mAdapter;

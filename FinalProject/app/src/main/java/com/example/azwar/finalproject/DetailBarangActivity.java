@@ -18,6 +18,7 @@ import android.widget.Button;
 public class DetailBarangActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private String message;
+    private int idBarang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,9 @@ public class DetailBarangActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if(intent != null){
             message = intent.getStringExtra(KatalogActivity.PAGE_ID);
+            idBarang = Integer.parseInt(intent.getStringExtra(KategoriActivity.BARANG_ID));
         }
+
 
         tabLayout = (TabLayout) findViewById(R.id.detail_barang_tab_layout);
         tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
@@ -78,5 +81,9 @@ public class DetailBarangActivity extends AppCompatActivity {
 
     public String getMessage(){
         return message;
+    }
+
+    public int getIdBarang(){
+        return idBarang;
     }
 }
