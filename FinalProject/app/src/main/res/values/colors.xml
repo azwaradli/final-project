@@ -7,4 +7,5 @@
     <color name="secondaryText">#737373</color>
     <color name="hintText">#999999</color>
     <color name="softgrey">#E0E0E0</color>
+    <color name="red">#D50000</color>
 </resources>

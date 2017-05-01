@@ -7,47 +7,127 @@
         android:id="@+id/anggota_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:layout_marginTop="8dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
         <TextView
             android:id="@+id/title_anggota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Anggota 1"
-            android:textColor="@color/primaryText"/>
+            android:textColor="@color/primaryText" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="Nama"
+            android:paddingLeft="8dp"
             android:textColorHint="@color/hintText"
-            android:textSize="14sp"
-            android:paddingLeft="8dp"/>
+            android:textSize="14sp" />
+
         <EditText
-            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="No. HP"
+            android:inputType="number"
+            android:paddingLeft="8dp"
             android:textColorHint="@color/hintText"
-            android:textSize="14sp"
-            android:paddingLeft="8dp"/>
+            android:textSize="14sp" />
+
         <Button
             android:id="@+id/pilihBarangButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/orangeripple"
+            android:onClick="pilihBarang"
             android:text="Pilih Barang"
             android:textAllCaps="false"
-            android:textStyle="bold"
             android:textSize="16sp"
-            android:onClick="pilihBarang"/>
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/layoutKeranjang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/namaBarang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Barang"
+                    android:textColor="@color/primaryText" />
+
+                <TextView
+                    android:id="@+id/hargaBarang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Rp 110.000"
+                    android:textColor="@color/secondaryText" />
+
+                <TextView
+                    android:id="@+id/cicilanBarang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Cicilan Rp 22.000/bulan"
+                    android:textColor="@color/secondaryText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/gantiButton"
+                    android:layout_width="64dp"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="24dp"
+                    android:background="@drawable/orangeripple"
+                    android:text="ganti"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:onClick="gantiBarang"/>
+                <Button
+                    android:id="@+id/hapusButton"
+                    android:layout_width="64dp"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/redripple"
+                    android:text="hapus"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:onClick="hapusBarang"/>
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/softgrey"/>
     </LinearLayout>
 </LinearLayout>

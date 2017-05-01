@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 
@@ -42,23 +44,46 @@ public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaItemView> {
     // biasanya ada database
     @Override
     public void onBindViewHolder(AnggotaItemView holder, int position) {
+        TextView title = holder.mTitle;
+        Button pilihBarangButton = holder.pilihBarangButton;
+        LinearLayout layoutKeranjang = holder.layoutKeranjang;
+        TextView namaBarang = holder.namaBarang;
+        TextView hargaBarang = holder.hargaBarang;
+        TextView cicilanBarang = holder.cicilanBarang;
+        Button gantiButton = holder.gantiButton;
+        Button hapusButton = holder.hapusButton;
+
         Barang barang = null;
         if(keranjangHashMap != null){
             barang = (Barang) keranjangHashMap.get(""+position);
         }
         if(barang != null){
+            layoutKeranjang.setVisibility(View.VISIBLE);
+            pilihBarangButton.setVisibility(View.GONE);
+            namaBarang.setText(barang.getNama());
 
+            DecimalFormat formatter = new DecimalFormat("#,###,###");
+            int hargaRaw = barang.getHarga();
+            String harga = formatter.format(hargaRaw);
+            harga = harga.replace(',', '.');
+            hargaBarang.setText("Rp "+harga+",-");
+
+            int hargaCicil = hargaRaw/5;
+            String cicilan = formatter.format(hargaCicil);
+            cicilan = cicilan.replace(',', '.');
+            cicilanBarang.setText("Cicilan Rp "+cicilan+"/bulan");
+
+            gantiButton.setTag(position);
+            hapusButton.setTag(position);
         }
         else{
-
+            pilihBarangButton.setVisibility(View.VISIBLE);
+            pilihBarangButton.setTag(position);
         }
 
-        TextView title = holder.mTitle;
         title.setText("Anggota " + (position+1));
 
         Log.d("cek",""+position);
-        Button pilihBarangButton = holder.pilihBarangButton;
-        pilihBarangButton.setTag(position);
     }
 
     public void setContentCount(int count) {

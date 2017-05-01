@@ -171,4 +171,12 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
         intent.putExtra(EXTRA_MESSAGE, idButton);
         startActivity(intent);
     }
+
+    public void gantiBarang(View view){
+
+    }
+
+    public void hapusBarang(View view){
+
+    }
 }
