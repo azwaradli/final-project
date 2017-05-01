@@ -629,12 +629,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         );
     }
 
-    public void deleteKeranjang(int id){
+    public void deleteKeranjang(int idButton){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(
                 TABLE_KERANJANG,
-                KEY_ID + " = ?",
-                new String[] {String.valueOf(id)}
+                KEY_ID_BUTTON + " = ?",
+                new String[] {String.valueOf(idButton)}
         );
         db.close();
     }

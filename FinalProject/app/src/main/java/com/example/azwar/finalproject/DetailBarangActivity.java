@@ -88,11 +88,11 @@ public class DetailBarangActivity extends AppCompatActivity {
 
     public void pilihBarang(View view) throws ParseException {
         final Intent intent = new Intent(this, DaftarKelompokArisanActivity.class);
-        DatabaseHandler db = new DatabaseHandler(this);
+        final DatabaseHandler db = new DatabaseHandler(this);
 
         int idBarangTemp = db.getKeranjang(idButton);
         if(idBarangTemp != -999){
-            Barang barang = db.getBarang(idBarang);
+            Barang barang = db.getBarang(idBarangTemp);
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setMessage("Apakah Anda ingin mengganti "+barang.getNama()+" dengan barang ini?");
             alertDialogBuilder.setPositiveButton("Ya",
@@ -100,6 +100,8 @@ public class DetailBarangActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Toast.makeText(getApplicationContext(), "Ya", Toast.LENGTH_LONG).show();
+                            db.deleteKeranjang(idButton);
+                            db.addKeranjang(idButton,idBarang);
                             startActivity(intent);
                         }
                     });
