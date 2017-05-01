@@ -1,6 +1,7 @@
 package com.example.azwar.finalproject;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -17,6 +19,13 @@ import java.util.List;
 
 public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaItemView> {
     private int mCount;
+    private Context context;
+    private HashMap keranjangHashMap;
+
+    public AnggotaAdapter(Context context, HashMap keranjangHashMap){
+        this.context = context;
+        this.keranjangHashMap = keranjangHashMap;
+    }
 
     // untuk menghubungkan adapter dengan itemview
     @Override
@@ -33,6 +42,17 @@ public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaItemView> {
     // biasanya ada database
     @Override
     public void onBindViewHolder(AnggotaItemView holder, int position) {
+        Barang barang = null;
+        if(keranjangHashMap != null){
+            barang = (Barang) keranjangHashMap.get(""+position);
+        }
+        if(barang != null){
+
+        }
+        else{
+
+        }
+
         TextView title = holder.mTitle;
         title.setText("Anggota " + (position+1));
 

@@ -39,11 +39,11 @@ public class KategoriActivity extends AppCompatActivity {
         toolbar.setTitle(message);
 
         db = new DatabaseHandler(this);
-//        db.deleteAllBarang();
+//        db.deleteAllTables();
 
-//        Barang barang1 = new Barang("Shinta Lemari Plastik Cokelat 4 Susun", 259500, "FURNITURE-01", "Lemari laci berbahan plastik warna cokelat ini terdiri dari 4 susun laci yang dapa memuat beragam keperluan di rumah.", "Bahan: Plastik | Dimensi: 48x43x89cm");
-//        Barang barang2 = new Barang("Shinta Sauce Pan", 89500, "PERALATAN MASAK-01", "Panci yang disertai tutup ini sangat cocok bagi Anda yang gemar memasak rebusan dalam jumlah sedikit", "Ukuran: Diameter 18cm | Bahan: Alumunium");
-//        Barang barang3 = new Barang("Fidela Set Pisau Dapur", 155000, "PERALATAN DAPUR-01", "Fidela Pisau Set memiliki warna yang ceria membuat hari-hari anda dalam memotong bahan makanan apapun menjadi lebih semangat.", "Bahan: Stainless Steel | Kelengkapan: 1 pcs Pisau Chef 12cm, 1 pcs Pisau Roti 12.5cm, 1 pcs Pisau Daging 10cm, 1 pcs Pisau Serbagugna 9.5cm, 1 pcs Pisau Paring 7.5cm, 1 pcs Gunting 8.5cm | Dimensi: 35x12x9cm | Berat: 2kg | Warna sesuai stock yang tersedia");
+        Barang barang1 = new Barang("Shinta Lemari Plastik Cokelat 4 Susun", 259500, "FURNITURE-01", "Lemari laci berbahan plastik warna cokelat ini terdiri dari 4 susun laci yang dapa memuat beragam keperluan di rumah.", "Bahan: Plastik | Dimensi: 48x43x89cm");
+        Barang barang2 = new Barang("Shinta Sauce Pan", 89500, "PERALATAN MASAK-01", "Panci yang disertai tutup ini sangat cocok bagi Anda yang gemar memasak rebusan dalam jumlah sedikit", "Ukuran: Diameter 18cm | Bahan: Alumunium");
+        Barang barang3 = new Barang("Fidela Set Pisau Dapur", 155000, "PERALATAN DAPUR-01", "Fidela Pisau Set memiliki warna yang ceria membuat hari-hari anda dalam memotong bahan makanan apapun menjadi lebih semangat.", "Bahan: Stainless Steel | Kelengkapan: 1 pcs Pisau Chef 12cm, 1 pcs Pisau Roti 12.5cm, 1 pcs Pisau Daging 10cm, 1 pcs Pisau Serbagugna 9.5cm, 1 pcs Pisau Paring 7.5cm, 1 pcs Gunting 8.5cm | Dimensi: 35x12x9cm | Berat: 2kg | Warna sesuai stock yang tersedia");
 
 //        long id = db.addBarang(barang1);
 //        db.addBarang(barang2);
@@ -60,7 +60,7 @@ public class KategoriActivity extends AppCompatActivity {
         Log.d("jumlah barang", ""+barangList.size());
         for (Barang barang: barangList){
             String log = "id = "+barang.getId()+", nama = "+barang.getNama()+", harga = "+barang.getHarga()+", deskripsi= "+barang.getDeskripsi()+", spesifikasi= "+barang.getSpesifikasi();
-            Log.d("barang log", log);
+//            Log.d("barang log", log);
         }
 
 //        Log.d("add id",""+id);

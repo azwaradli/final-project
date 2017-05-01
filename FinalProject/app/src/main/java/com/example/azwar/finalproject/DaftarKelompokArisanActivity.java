@@ -24,12 +24,16 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.util.HashMap;
+
 public class DaftarKelompokArisanActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     public final static String EXTRA_MESSAGE = "com.example.finalproject.MESSAGE";
     private Spinner spinner;
     private RecyclerView mRecyclerView;
     private AnggotaAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private DatabaseHandler db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +50,20 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
+        db = new DatabaseHandler(this);
+        HashMap keranjangHashMap = null;
+        try {
+            keranjangHashMap = db.getAllKeranjang();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         mRecyclerView = (RecyclerView) findViewById(R.id.anggotaRecyclerView);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setNestedScrollingEnabled(false);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new AnggotaAdapter();
+        mAdapter = new AnggotaAdapter(this, keranjangHashMap);
         mAdapter.setContentCount(10);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();

@@ -15,11 +15,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.text.ParseException;
+import java.util.List;
+
 public class DetailBarangActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private String message;
     private int idBarang;
-    private String idButton;
+    private int idButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +33,10 @@ public class DetailBarangActivity extends AppCompatActivity {
         if(intent != null){
             message = intent.getStringExtra(KatalogActivity.PAGE_ID);
             idBarang = Integer.parseInt(intent.getStringExtra(KategoriActivity.BARANG_ID));
-            idButton = intent.getStringExtra(DaftarKelompokArisanActivity.EXTRA_MESSAGE);
-            Log.d("button",idButton);
+            String buttonExtra = intent.getStringExtra(DaftarKelompokArisanActivity.EXTRA_MESSAGE);
+            if(buttonExtra != null){
+                idButton = Integer.parseInt(buttonExtra);
+            }
         }
 
         tabLayout = (TabLayout) findViewById(R.id.detail_barang_tab_layout);
@@ -76,11 +81,26 @@ public class DetailBarangActivity extends AppCompatActivity {
         return true;
     }
 
-    public void pilihBarang(View view){
+    public void pilihBarang(View view) throws ParseException {
         Intent intent = new Intent(this, DaftarKelompokArisanActivity.class);
         DatabaseHandler db = new DatabaseHandler(this);
 
-//        db.addKeranjang();
+//        db.deleteAllKeranjang();
+//        Log.d("cek",""+idButton +" & "+idBarang);
+//        db.addKeranjang(idButton, idBarang);
+//        Log.d("cek isi keranjang",""+db.getKeranjangCount());
+        int barangId = db.getKeranjang(idButton);
+//        Log.d("cek id barang", ""+barangId);
+
+
+        if (barangId != -999){
+            Barang barang = db.getBarang(barangId);
+
+            String log = "id = "+barang.getId()+", nama = "+barang.getNama()+", harga = "+barang.getHarga()+", deskripsi= "+barang.getDeskripsi()+", spesifikasi= "+barang.getSpesifikasi();
+            Log.d("barang log", log);
+        }
+        else
+            Log.d("barang log", "button kosong");
 
         db.closeDB();
         startActivity(intent);

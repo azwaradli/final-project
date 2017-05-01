@@ -16,6 +16,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -33,6 +34,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_KELOMPOK_ARISAN = "kelompok_arisan";
     private static final String TABLE_ANGGOTA_ARISAN = "anggota_arisan";
     private static final String TABLE_BARANG = "barang";
+    private static final String TABLE_KERANJANG = "keranjang";
 
     // Common column names
     private static final String KEY_ID = "id";
@@ -48,13 +50,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // ANGGOTA ARISAN Table - column names
     private static final String KEY_NO_HP = "no_hp";
     private static final String KEY_ALAMAT = "alamat";
-    private static final String KEY_KELOMPOK_ARISAN_ID = "kelompok_arisan_id";
+    private static final String KEY_ID_KELOMPOK_ARISAN = "kelompok_arisan_id";
 
     // BARANG Table - column names
     private static final String KEY_HARGA = "harga";
     private static final String KEY_KODE_PRODUK = "kode_produk";
     private static final String KEY_DESKRIPSI = "deskripsi";
     private static final String KEY_SPESIFIKASI = "spesifikasi";
+
+    // KERANJANG Table - column names
+    private static final String KEY_ID_BUTTON = "id_button";
+    private static final String KEY_ID_BARANG = "id_barang";
 
     private static final String CREATE_KELOMPOK_ARISAN_TABLE = "CREATE TABLE " + TABLE_KELOMPOK_ARISAN + "("
             + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
@@ -71,8 +77,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + KEY_NAMA + " TEXT, "
             + KEY_NO_HP + " INTEGER, "
             + KEY_ALAMAT + " TEXT, "
-            + KEY_KELOMPOK_ARISAN_ID + " INT, "
-            + "FOREIGN KEY (" + KEY_KELOMPOK_ARISAN_ID + ") REFERENCES " + TABLE_KELOMPOK_ARISAN + "(" + KEY_ID + ")"
+            + KEY_ID_KELOMPOK_ARISAN + " INT, "
+            + "FOREIGN KEY (" + KEY_ID_KELOMPOK_ARISAN + ") REFERENCES " + TABLE_KELOMPOK_ARISAN + "(" + KEY_ID + ")"
             + ")";
 
     private static final String CREATE_BARANG_TABLE = "CREATE TABLE " + TABLE_BARANG + "("
@@ -84,6 +90,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + KEY_SPESIFIKASI + " TEXT"
             + ")";
 
+    public static final String CREATE_KERANJANG_TABLE = "CREATE TABLE " + TABLE_KERANJANG + "("
+            + KEY_ID + " INTEGER PRIMARY KEY, "
+            + KEY_ID_BUTTON + " INTEGER, "
+            + KEY_ID_BARANG + " INTEGER, "
+            + "FOREIGN KEY (" + KEY_ID_BARANG+ ") REFERENCES " + TABLE_BARANG+ "(" + KEY_ID + ")"
+            + ")";
+
     public DatabaseHandler(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -93,6 +106,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_KELOMPOK_ARISAN_TABLE);
         db.execSQL(CREATE_ANGGOTA_ARISAN_TABLE);
         db.execSQL(CREATE_BARANG_TABLE);
+        db.execSQL(CREATE_KERANJANG_TABLE);
     }
 
     @Override
@@ -101,6 +115,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_KELOMPOK_ARISAN);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ANGGOTA_ARISAN);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BARANG);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_KERANJANG);
 
         // Create tables again
         onCreate(db);
@@ -236,6 +251,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void deleteAllKelompokArisan(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_KELOMPOK_ARISAN, null, null);
+        db.close();
+    }
+
     public void addAnggotaArisan(AnggotaArisan anggotaArisan){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -243,7 +264,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_NAMA, anggotaArisan.getNama());
         values.put(KEY_NO_HP, anggotaArisan.getNoHp());
         values.put(KEY_ALAMAT, anggotaArisan.getAlamat());
-        values.put(KEY_KELOMPOK_ARISAN_ID, anggotaArisan.getKelompokArisanId());
+        values.put(KEY_ID_KELOMPOK_ARISAN, anggotaArisan.getKelompokArisanId());
 
         db.insert(TABLE_ANGGOTA_ARISAN, null, values);
         db.close();
@@ -259,7 +280,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                         KEY_NAMA,
                         KEY_NO_HP,
                         KEY_ALAMAT,
-                        KEY_KELOMPOK_ARISAN_ID},
+                        KEY_ID_KELOMPOK_ARISAN},
                 KEY_ID + " = ?",
                 new String[] {String.valueOf(id)},
                 null,
@@ -329,7 +350,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_NAMA, anggotaArisan.getNama());
         values.put(KEY_NO_HP, anggotaArisan.getNoHp());
         values.put(KEY_ALAMAT, anggotaArisan.getAlamat());
-        values.put(KEY_KELOMPOK_ARISAN_ID, anggotaArisan.getKelompokArisanId());
+        values.put(KEY_ID_KELOMPOK_ARISAN, anggotaArisan.getKelompokArisanId());
 
         return db.update(
                 TABLE_ANGGOTA_ARISAN,
@@ -346,6 +367,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 KEY_ID + " = ?",
                 new String[] {String.valueOf(anggotaArisan.getId())}
         );
+        db.close();
+    }
+
+    public void deleteAllAnggotaArisan(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_ANGGOTA_ARISAN, null, null);
         db.close();
     }
 
@@ -508,6 +535,111 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_BARANG, null, null);
         db.close();
+    }
+
+    public long addKeranjang(int buttonId, int barangId){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID_BUTTON, buttonId);
+        values.put(KEY_ID_BARANG, barangId);
+
+        long id = db.insert(TABLE_KERANJANG, null, values);
+        db.close();
+
+        return id;
+    }
+
+    public int getKeranjang(int buttonId){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT * FROM " + TABLE_KERANJANG + " WHERE " + KEY_ID_BUTTON + " = " + buttonId;
+        Log.d("get barang query",selectQuery);
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // TODO: Cek kenapa dia masuk ke sini :(
+        int barangId = -999;
+        if (cursor != null){
+            Log.d("cek","kenapa kamu masuk sini");
+            cursor.moveToFirst();
+            barangId = Integer.parseInt(cursor.getString(2));
+        }
+
+        cursor.close();
+
+        return barangId;
+    }
+
+    public HashMap getAllKeranjang() throws ParseException {
+        HashMap hashMap = new HashMap();
+
+        // select all query
+        String selectQuery = "SELECT * FROM " + TABLE_KERANJANG;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                int idBarang = getKeranjang(Integer.parseInt(cursor.getString(1)));
+                Log.d("testing",""+idBarang);
+                Barang barang = getBarang(idBarang);
+
+                hashMap.put(cursor.getString(1), barang);
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return hashMap;
+    }
+
+    public int getKeranjangCount(){
+        String countQuery = "SELECT * FROM " + TABLE_KERANJANG;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int count = cursor.getCount();
+        cursor.close();
+
+        return count;
+    }
+
+    public int updateKeranjang(int id, Barang barang) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID_BARANG, barang.getId());
+
+        return db.update(
+                TABLE_KERANJANG,
+                values,
+                KEY_ID + " ?",
+                new String[]{String.valueOf(id)}
+        );
+    }
+
+    public void deleteKeranjang(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(
+                TABLE_KERANJANG,
+                KEY_ID + " = ?",
+                new String[] {String.valueOf(id)}
+        );
+        db.close();
+    }
+
+    public void deleteAllKeranjang(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_KERANJANG, null, null);
+        db.close();
+    }
+
+    public void deleteAllTables(){
+        deleteAllKelompokArisan();
+        deleteAllAnggotaArisan();
+        deleteAllBarang();
+        deleteAllKeranjang();
     }
 
     public void closeDB() {
