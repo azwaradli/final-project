@@ -1,5 +1,6 @@
 package com.example.azwar.finalproject;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.icu.text.IDNA;
 import android.support.design.widget.TabLayout;
@@ -7,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,8 +16,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.text.ParseException;
+import java.util.HashMap;
 import java.util.List;
 
 public class DetailBarangActivity extends AppCompatActivity {
@@ -36,6 +40,7 @@ public class DetailBarangActivity extends AppCompatActivity {
             String buttonExtra = intent.getStringExtra(DaftarKelompokArisanActivity.EXTRA_MESSAGE);
             if(buttonExtra != null){
                 idButton = Integer.parseInt(buttonExtra);
+                Toast.makeText(getApplicationContext(), "Button "+idButton, Toast.LENGTH_LONG).show();
             }
         }
 
@@ -82,28 +87,39 @@ public class DetailBarangActivity extends AppCompatActivity {
     }
 
     public void pilihBarang(View view) throws ParseException {
-        Intent intent = new Intent(this, DaftarKelompokArisanActivity.class);
+        final Intent intent = new Intent(this, DaftarKelompokArisanActivity.class);
         DatabaseHandler db = new DatabaseHandler(this);
 
-//        db.deleteAllKeranjang();
-//        Log.d("cek",""+idButton +" & "+idBarang);
-//        db.addKeranjang(idButton, idBarang);
-//        Log.d("cek isi keranjang",""+db.getKeranjangCount());
-        int barangId = db.getKeranjang(idButton);
-//        Log.d("cek id barang", ""+barangId);
+        int idBarangTemp = db.getKeranjang(idButton);
+        if(idBarangTemp != -999){
+            Barang barang = db.getBarang(idBarang);
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setMessage("Apakah Anda ingin mengganti "+barang.getNama()+" dengan barang ini?");
+            alertDialogBuilder.setPositiveButton("Ya",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(getApplicationContext(), "Ya", Toast.LENGTH_LONG).show();
+                            startActivity(intent);
+                        }
+                    });
+            alertDialogBuilder.setNegativeButton("Tidak",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(getApplicationContext(), "Tidak", Toast.LENGTH_LONG).show();
+                        }
+                    });
 
-
-        if (barangId != -999){
-            Barang barang = db.getBarang(barangId);
-
-            String log = "id = "+barang.getId()+", nama = "+barang.getNama()+", harga = "+barang.getHarga()+", deskripsi= "+barang.getDeskripsi()+", spesifikasi= "+barang.getSpesifikasi();
-            Log.d("barang log", log);
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
         }
-        else
-            Log.d("barang log", "button kosong");
+        else{
+            startActivity(intent);
+            db.addKeranjang(idButton, idBarang);
+        }
 
         db.closeDB();
-        startActivity(intent);
     }
 
     public String getMessage(){

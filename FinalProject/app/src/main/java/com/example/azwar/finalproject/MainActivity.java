@@ -28,8 +28,10 @@ public class MainActivity extends AppCompatActivity {
             pageID = intent.getStringExtra(KatalogActivity.PAGE_ID);
         }
 
-        BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
+//        DatabaseHandler db = new DatabaseHandler(this);
+//        db.deleteAllKeranjang();
 
+        BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {

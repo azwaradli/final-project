@@ -402,26 +402,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        /*Cursor cursor = db.query(
-                TABLE_BARANG,
-                new String[]{
-                        KEY_ID,
-                        KEY_NAMA,
-                        KEY_HARGA,
-                        KEY_KODE_PRODUK,
-                        KEY_DESKRIPSI,
-                        KEY_SPESIFIKASI},
-                KEY_ID + " = ?",
-                new String[] {String.valueOf(id)},
-                null,
-                null,
-                null,
-                null
-        );*/
-
         Barang barang = null;
 
-        if (cursor != null){
+        if (cursor.getCount() != 0){
             cursor.moveToFirst();
             barang = new Barang(
                     Integer.parseInt(cursor.getString(0)),
@@ -560,10 +543,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         // TODO: Cek kenapa dia masuk ke sini :(
         int barangId = -999;
-        if (cursor != null){
-            Log.d("cek","kenapa kamu masuk sini");
+        if (cursor.getCount() != 0){
+            Log.d("cek","kenapa kamu masuk sini "+cursor.getCount());
             cursor.moveToFirst();
             barangId = Integer.parseInt(cursor.getString(2));
+            Log.d("haha","haha "+barangId);
         }
 
         cursor.close();
@@ -576,6 +560,32 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         // select all query
         String selectQuery = "SELECT * FROM " + TABLE_KERANJANG;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.getCount() != 0){
+            cursor.moveToFirst();
+            do{
+                int idButton = Integer.parseInt(cursor.getString(1));
+                int idBarang = getKeranjang(idButton);
+                Log.d("testing",idButton+" "+idBarang);
+                Barang barang = getBarang(idBarang);
+
+                hashMap.put(cursor.getString(1), barang);
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return hashMap;
+    }
+
+    public HashMap getAllKeranjang(int idButton) throws ParseException {
+        HashMap hashMap = new HashMap();
+
+        // select all query
+        String selectQuery = "SELECT * FROM " + TABLE_KERANJANG + " WHERE " + KEY_ID_BUTTON + " = "+idButton;
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);

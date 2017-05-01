@@ -102,26 +102,26 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <Button
-                    android:id="@+id/gantiButton"
-                    android:layout_width="64dp"
-                    android:layout_height="32dp"
-                    android:layout_marginLeft="24dp"
-                    android:background="@drawable/orangeripple"
-                    android:text="ganti"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:onClick="gantiBarang"/>
-                <Button
                     android:id="@+id/hapusButton"
                     android:layout_width="64dp"
                     android:layout_height="32dp"
                     android:layout_marginLeft="24dp"
-                    android:layout_marginTop="4dp"
                     android:background="@drawable/redripple"
                     android:text="hapus"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:onClick="hapusBarang"/>
+                <Button
+                    android:id="@+id/gantiButton"
+                    android:layout_width="64dp"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="24dp"
+                    android:background="@drawable/orangeripple"
+                    android:text="ganti"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:onClick="pilihBarang"/>
             </LinearLayout>
         </LinearLayout>
         <View

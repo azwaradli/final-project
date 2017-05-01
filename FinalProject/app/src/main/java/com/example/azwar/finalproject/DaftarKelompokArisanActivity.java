@@ -1,11 +1,13 @@
 package com.example.azwar.finalproject;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 //import android.support.v7.app.AlertController;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,6 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.util.HashMap;
@@ -57,6 +60,8 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        Toast.makeText(getApplicationContext(), ""+db.getKeranjangCount(), Toast.LENGTH_LONG).show();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.anggotaRecyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -108,56 +113,6 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
 
         mAdapter.setContentCount(num);
         mAdapter.notifyDataSetChanged();
-//
-//        LinearLayout anggotaLayout = (LinearLayout) findViewById(R.id.anggota_section);
-//        anggotaLayout.removeAllViews();
-//        for(int i = 0; i < num; i++){
-//            LinearLayout layout = new LinearLayout(this);
-//            layout.setOrientation(LinearLayout.VERTICAL);
-//            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//            layoutParams.bottomMargin = convertDPtoPixels(20,this);
-//
-//            TextView text = new TextView(this);
-//            text.setText("Anggota "+(i+1));
-//            text.setTextColor(ContextCompat.getColor(this, R.color.primaryText));
-//            layout.addView(text, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-//
-//            EditText nama = new EditText(this);
-//            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//            params.topMargin = convertDPtoPixels(16,this);
-//            nama.setLayoutParams(params);
-//            nama.setPadding(convertDPtoPixels(8, this), convertDPtoPixels(0, this), convertDPtoPixels(0, this), convertDPtoPixels(12, this));
-//            nama.setHint("Nama");
-//            nama.setHintTextColor(ContextCompat.getColor(this, R.color.hintText));
-//            nama.setTextSize(TypedValue.COMPLEX_UNIT_SP,14);
-//            layout.addView(nama, params);
-//
-//            EditText noHP = new EditText(this);
-//            noHP.setLayoutParams(params);
-//            noHP.setPadding(convertDPtoPixels(8, this), convertDPtoPixels(0, this), convertDPtoPixels(0, this), convertDPtoPixels(12, this));
-//            noHP.setHint("No. HP");
-//            noHP.setHintTextColor(ContextCompat.getColor(this, R.color.hintText));
-//            noHP.setTextSize(TypedValue.COMPLEX_UNIT_SP,14);
-//            layout.addView(noHP, params);
-//
-//            Button button = new Button(this);
-//            LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//            buttonParams.topMargin = convertDPtoPixels(12,this);
-//            button.setText("pilih barang");
-//            button.setTextColor(Color.WHITE);
-//            button.setBackground(ContextCompat.getDrawable(this, R.drawable.orangeripple));
-//            button.setOnClickListener(new View.OnClickListener(){
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent = new Intent(DaftarKelompokArisanActivity.this, KatalogActivity.class);
-//                    intent.putExtra(KatalogActivity.PAGE_ID, "daftarKelompokArisanActivity");
-//                    startActivity(intent);
-//                }
-//            });
-//            layout.addView(button, buttonParams);
-//
-//            anggotaLayout.addView(layout,layoutParams);
-//        }
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
@@ -172,11 +127,27 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
         startActivity(intent);
     }
 
-    public void gantiBarang(View view){
-
-    }
-
     public void hapusBarang(View view){
+        final String idButton = view.getTag().toString();
 
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Apakah Anda yakin menghapus barang ini?");
+        alertDialogBuilder.setPositiveButton("Ya",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(), "Ya "+idButton, Toast.LENGTH_LONG).show();
+                    }
+                });
+        alertDialogBuilder.setNegativeButton("Tidak",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(), "Tidak "+idButton, Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }
