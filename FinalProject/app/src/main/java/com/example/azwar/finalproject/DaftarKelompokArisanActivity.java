@@ -128,7 +128,8 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
     }
 
     public void hapusBarang(View view){
-        final String idButton = view.getTag().toString();
+        final int idButton = Integer.parseInt(view.getTag().toString());
+        final DatabaseHandler db = new DatabaseHandler(this);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("Apakah Anda yakin menghapus barang ini?");
@@ -136,14 +137,16 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(), "Ya "+idButton, Toast.LENGTH_LONG).show();
+                        db.deleteKeranjang(idButton);
+                        finish();
+                        startActivity(getIntent());
                     }
                 });
         alertDialogBuilder.setNegativeButton("Tidak",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(), "Tidak "+idButton, Toast.LENGTH_LONG).show();
+
                     }
                 });
 
