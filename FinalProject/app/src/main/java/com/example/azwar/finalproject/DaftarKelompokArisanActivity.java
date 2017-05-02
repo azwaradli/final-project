@@ -3,6 +3,7 @@ package com.example.azwar.finalproject;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
@@ -32,26 +33,50 @@ import java.util.HashMap;
 
 public class DaftarKelompokArisanActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     public final static String EXTRA_MESSAGE = "com.example.finalproject.MESSAGE";
+    public static final String MyPREFERENCES = "MyPrefs" ;
     private Spinner spinner;
     private RecyclerView mRecyclerView;
     private AnggotaAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private DatabaseHandler db;
+    private SharedPreference sharedPreference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar_kelompok_arisan);
 
+        sharedPreference = new SharedPreference();
+
+        String periode = sharedPreference.getPeriodeValue(this);
+        Log.d("huhu",periode);
+        if(periode != null){
+            if(periode.equals("bulanan")){
+                RadioButton radioBulanan = (RadioButton) findViewById(R.id.radio_bulanan);
+                radioBulanan.setChecked(true);
+            }
+            else{
+                RadioButton radioMingguan = (RadioButton) findViewById(R.id.radio_mingguan);
+                radioMingguan.setChecked(true);
+            }
+        }
+        else {
+            RadioButton radioBulanan = (RadioButton) findViewById(R.id.radio_bulanan);
+            radioBulanan.setChecked(true);
+        }
+
         spinner = (Spinner) findViewById(R.id.anggota_spinner);
         spinner.setOnItemSelectedListener(this);
-
-        RadioButton radioBulanan = (RadioButton) findViewById(R.id.radio_bulanan);
-        radioBulanan.setChecked(true);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.anggota_bulanan_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        
+        int jumlahAnggotaIdx = sharedPreference.getJumlahAnggotaIdx(this);
+        Log.d("huhu",""+jumlahAnggotaIdx);
+        if(jumlahAnggotaIdx != -999){
+            spinner.setSelection(jumlahAnggotaIdx);
+        }
 
         db = new DatabaseHandler(this);
         HashMap keranjangHashMap = null;
@@ -82,6 +107,14 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
                     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.angota_mingguan_array, android.R.layout.simple_spinner_item);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinner.setAdapter(adapter);
+
+                    sharedPreference.savePeriode(this, "mingguan");
+
+                    int jumlahAnggotaIdx = sharedPreference.getJumlahAnggotaIdx(this);
+                    Log.d("huhu",""+jumlahAnggotaIdx);
+                    if(jumlahAnggotaIdx != -999){
+                        spinner.setSelection(jumlahAnggotaIdx);
+                    }
                 }
                 break;
             case R.id.radio_bulanan:
@@ -89,6 +122,14 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
                     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.anggota_bulanan_array, android.R.layout.simple_spinner_item);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinner.setAdapter(adapter);
+
+                    sharedPreference.savePeriode(this, "bulanan");
+
+                    int jumlahAnggotaIdx = sharedPreference.getJumlahAnggotaIdx(this);
+                    Log.d("huhu",""+jumlahAnggotaIdx);
+                    if(jumlahAnggotaIdx != -999){
+                        spinner.setSelection(jumlahAnggotaIdx);
+                    }
                 }
                 break;
         }
@@ -110,6 +151,10 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
                                int pos, long id) {
         String content = parent.getItemAtPosition(pos).toString();
         int num = Integer.parseInt(content);
+
+        sharedPreference.saveJumlahAnggotaIdx(this, pos);
+        int jumlahAnggotaIdx = sharedPreference.getJumlahAnggotaIdx(this);
+        Log.d("huhu",""+jumlahAnggotaIdx);
 
         mAdapter.setContentCount(num);
         mAdapter.notifyDataSetChanged();

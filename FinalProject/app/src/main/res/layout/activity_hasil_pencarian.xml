@@ -38,6 +38,7 @@
             android:background="@drawable/orangeripple"
             android:text="cari"
             android:textSize="12sp"
+            android:textStyle="bold"
             android:onClick="cari"/>
 
     </LinearLayout>

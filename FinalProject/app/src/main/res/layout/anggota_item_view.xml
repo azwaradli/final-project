@@ -20,7 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Anggota 1"
-            android:textColor="@color/primaryText" />
+            android:textColor="@color/primaryText"
+            android:textStyle="bold"/>
 
         <EditText
             android:layout_width="match_parent"
