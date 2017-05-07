@@ -20,7 +20,7 @@
             android:name=".DaftarKelompokArisanActivity"
             android:label="Daftar Kelompok Arisan"
             android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".KategoriActivity"
             android:label="Kategori"
@@ -39,7 +39,11 @@
         <activity
             android:name=".KatalogActivity"
             android:label="Katalog"
-            android:parentActivityName=".DaftarKelompokArisanActivity"></activity>
+            android:parentActivityName=".DaftarKelompokArisanActivity" />
+        <activity
+            android:name=".TambahPertanyaanActivity"
+            android:label="Tambah Pertanyaan"
+            android:parentActivityName=".DetailBarangActivity" />
     </application>
 
 </manifest>

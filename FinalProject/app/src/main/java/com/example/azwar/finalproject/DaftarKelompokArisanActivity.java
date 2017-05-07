@@ -86,14 +86,14 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
             e.printStackTrace();
         }
 
-        Toast.makeText(getApplicationContext(), ""+db.getKeranjangCount(), Toast.LENGTH_LONG).show();
+        Button lanjutButton = (Button) findViewById(R.id.lanjutButton);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.anggotaRecyclerView);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setNestedScrollingEnabled(false);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new AnggotaAdapter(this, keranjangHashMap);
+        mAdapter = new AnggotaAdapter(this, keranjangHashMap, lanjutButton);
         mAdapter.setContentCount(10);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();

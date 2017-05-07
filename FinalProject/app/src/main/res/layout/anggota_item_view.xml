@@ -16,7 +16,7 @@
         android:paddingRight="16dp">
 
         <TextView
-            android:id="@+id/title_anggota"
+            android:id="@+id/titleAnggota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Anggota 1"
@@ -24,6 +24,7 @@
             android:textStyle="bold"/>
 
         <EditText
+            android:id="@+id/namaAnggota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -33,6 +34,7 @@
             android:textSize="14sp" />
 
         <EditText
+            android:id="@+id/noHpAnggota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

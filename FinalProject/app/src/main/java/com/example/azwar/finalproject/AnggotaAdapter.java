@@ -8,10 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.Length;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
+
+import java.lang.reflect.Array;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,14 +28,39 @@ import java.util.List;
  * Created by Azwar on 4/10/2017.
  */
 
-public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaItemView> {
+public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaItemView> implements Validator.ValidationListener{
     private int mCount;
     private Context context;
     private HashMap keranjangHashMap;
+    private Button lanjutButton;
+    private ArrayList<EditText> namaArrayList;
+    private ArrayList<EditText> noHpArrayList;
 
-    public AnggotaAdapter(Context context, HashMap keranjangHashMap){
+    @NotEmpty(message = "Harus diisi")
+    private TextView namaAnggota;
+
+    @NotEmpty(message = "Harus diisi")
+    @Length(min = 12, message = "Minimum 12 angka")
+    private TextView noHpAnggota;
+
+    public AnggotaAdapter(Context context, HashMap keranjangHashMap, Button lanjutButton){
         this.context = context;
         this.keranjangHashMap = keranjangHashMap;
+
+        this.lanjutButton = lanjutButton;
+        final Validator validator = new Validator(this);
+        validator.setValidationListener(this);
+
+        namaArrayList = new ArrayList<>();
+        noHpArrayList = new ArrayList<>();
+
+        this.lanjutButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                validator.validate();
+            }
+        });
     }
 
     // untuk menghubungkan adapter dengan itemview
@@ -52,6 +86,9 @@ public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaItemView> {
         TextView cicilanBarang = holder.cicilanBarang;
         Button gantiButton = holder.gantiButton;
         Button hapusButton = holder.hapusButton;
+
+        namaAnggota = holder.namaAnggota;
+        noHpAnggota = holder.noHpAnggota;
 
         Barang barang = null;
         if(keranjangHashMap != null){
@@ -93,5 +130,28 @@ public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaItemView> {
     @Override
     public int getItemCount() {
         return mCount;
+    }
+
+    @Override
+    public void onValidationSucceeded() {
+        Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+        for(ValidationError error : errors){
+            View view = error.getView();
+
+            String message = error.getCollatedErrorMessage(context);
+
+            //display the error message
+            if(view instanceof EditText){
+                ((EditText) view).setError(message);
+                view.requestFocus();
+            }
+            else{
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

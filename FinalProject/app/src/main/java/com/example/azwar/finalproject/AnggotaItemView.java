@@ -6,12 +6,16 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 /**
  * Created by Azwar on 4/10/2017.
  */
 
 public class AnggotaItemView extends RecyclerView.ViewHolder {
     public TextView mTitle;
+    public TextView namaAnggota;
+    public TextView noHpAnggota;
     public Button pilihBarangButton;
     public LinearLayout layoutKeranjang;
     public TextView namaBarang;
@@ -22,7 +26,9 @@ public class AnggotaItemView extends RecyclerView.ViewHolder {
 
     public AnggotaItemView(View itemView) {
         super(itemView);
-        mTitle = (TextView) itemView.findViewById(R.id.title_anggota);
+        mTitle = (TextView) itemView.findViewById(R.id.titleAnggota);
+        namaAnggota = (TextView) itemView.findViewById(R.id.namaAnggota);
+        noHpAnggota = (TextView) itemView.findViewById(R.id.noHpAnggota);
         pilihBarangButton = (Button) itemView.findViewById(R.id.pilihBarangButton);
         layoutKeranjang = (LinearLayout) itemView.findViewById(R.id.layoutKeranjang);
         namaBarang = (TextView) itemView.findViewById(R.id.namaBarang);
