@@ -74,7 +74,7 @@ public class InformasiProdukFragment extends Fragment {
         int cicilan = barang.getHarga()/5;
         String setoran = formatter.format(cicilan);
         setoran = setoran.replace(',', '.');
-        setoranBarang.setText("Rp. "+setoran+"/bulan (5 anggota)");
+        setoranBarang.setText("Rp. "+setoran+"/bulan dengan 5 anggota");
 
         TextView hargaBarang = (TextView) view.findViewById(R.id.hargaBarang);
         String harga = formatter.format(barang.getHarga());
