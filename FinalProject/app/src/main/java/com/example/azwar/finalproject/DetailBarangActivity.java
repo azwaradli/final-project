@@ -40,7 +40,7 @@ public class DetailBarangActivity extends AppCompatActivity {
             String buttonExtra = intent.getStringExtra(DaftarKelompokArisanActivity.EXTRA_MESSAGE);
             if(buttonExtra != null){
                 idButton = Integer.parseInt(buttonExtra);
-                Toast.makeText(getApplicationContext(), "Button "+idButton, Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), "Button "+idButton, Toast.LENGTH_LONG).show();
             }
         }
 
@@ -99,7 +99,7 @@ public class DetailBarangActivity extends AppCompatActivity {
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(getApplicationContext(), "Ya", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(getApplicationContext(), "Ya", Toast.LENGTH_LONG).show();
                             db.deleteKeranjang(idButton);
                             db.addKeranjang(idButton,idBarang);
                             startActivity(intent);
@@ -109,7 +109,7 @@ public class DetailBarangActivity extends AppCompatActivity {
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(getApplicationContext(), "Tidak", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(getApplicationContext(), "Tidak", Toast.LENGTH_LONG).show();
                         }
                     });
 

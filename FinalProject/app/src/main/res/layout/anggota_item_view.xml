@@ -53,9 +53,7 @@
             android:background="@drawable/orangeripple"
             android:onClick="pilihBarang"
             android:text="Pilih Barang"
-            android:textAllCaps="false"
             android:textSize="16sp"
-            android:textStyle="bold"
             android:visibility="gone"/>
 
         <LinearLayout
@@ -80,6 +78,7 @@
                     android:id="@+id/namaBarang"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
                     android:text="Nama Barang"
                     android:textColor="@color/primaryText" />
 
@@ -87,7 +86,7 @@
                     android:id="@+id/hargaBarang"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="2dp"
                     android:text="Rp 110.000"
                     android:textColor="@color/secondaryText" />
 
@@ -95,9 +94,8 @@
                     android:id="@+id/cicilanBarang"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
                     android:text="Cicilan Rp 22.000/bulan"
-                    android:textColor="@color/secondaryText" />
+                    android:textColor="@color/colorPrimary" />
             </LinearLayout>
 
             <LinearLayout

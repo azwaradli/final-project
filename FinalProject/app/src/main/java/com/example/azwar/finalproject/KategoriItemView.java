@@ -13,6 +13,7 @@ import android.widget.TextView;
 public class KategoriItemView extends RecyclerView.ViewHolder {
     public LinearLayout kategoriLayout;
     public TextView kategoriNama;
+    public TextView kategoriStatus;
     public TextView kategoriHarga;
     public TextView kategoriCicilan;
 
@@ -20,6 +21,7 @@ public class KategoriItemView extends RecyclerView.ViewHolder {
         super(itemView);
         kategoriLayout = (LinearLayout) itemView.findViewById(R.id.kategoriLayout);
         kategoriNama = (TextView) itemView.findViewById(R.id.kategoriNama);
+        kategoriStatus = (TextView) itemView.findViewById(R.id.kategoriStatus);
         kategoriHarga = (TextView) itemView.findViewById(R.id.kategoriHarga);
         kategoriCicilan = (TextView) itemView.findViewById(R.id.kategoriCicilan);
     }

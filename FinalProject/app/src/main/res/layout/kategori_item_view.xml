@@ -19,7 +19,7 @@
         android:src="@mipmap/ic_launcher"
         android:layout_gravity="center"/>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
@@ -29,9 +29,22 @@
             android:text="Nama Barang"
             android:textColor="@color/primaryText"/>
         <TextView
+            android:id="@+id/kategoriStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:text="Barang Tersedia"
+            android:textColor="@color/colorPrimary"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="6dp"
+            android:background="@color/softgrey"/>
+        <TextView
             android:id="@+id/kategoriHarga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
             android:text="Rp 110.000"
             android:textColor="@color/secondaryText"/>
         <TextView
@@ -39,6 +52,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cicilan Rp 22.000/bulan"
-            android:textColor="@color/secondaryText"/>
+            android:textColor="@color/colorAccent"/>
     </LinearLayout>
 </LinearLayout>

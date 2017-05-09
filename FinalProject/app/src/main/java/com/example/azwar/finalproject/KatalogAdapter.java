@@ -19,8 +19,8 @@ public class KatalogAdapter extends RecyclerView.Adapter<KatalogItemView> {
         "Peralatan Dapur",
         "Pakaian Pria",
         "Pakaian Wanita",
-        "Sepatu Laki-laki",
-        "Sepatu Perempuan",
+        "Sepatu Pria",
+        "Sepatu Wanita",
         "Elektronik Rumah Tangga",
         "Handphone dan Tablet"
     };

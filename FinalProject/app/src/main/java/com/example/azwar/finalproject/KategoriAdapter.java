@@ -1,6 +1,7 @@
 package com.example.azwar.finalproject;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -18,6 +21,7 @@ import java.util.List;
 
 public class KategoriAdapter extends RecyclerView.Adapter<KategoriItemView> {
     private List<Barang> barangList;
+    private Context context;
 
     public KategoriAdapter(List<Barang> barangList) {
         this.barangList = barangList;
@@ -25,7 +29,7 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriItemView> {
 
     @Override
     public KategoriItemView onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
+        context = parent.getContext();
         LayoutInflater layoutInflater = LayoutInflater.from(context);
 
         View view = layoutInflater.inflate(R.layout.kategori_item_view, parent, false);
@@ -44,6 +48,12 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriItemView> {
 
             TextView kategoriNama = holder.kategoriNama;
             kategoriNama.setText(barangList.get(position).getNama());
+
+            if (barangList.get(position).getStok() == 0){
+                TextView kategoriStatus = holder.kategoriStatus;
+                kategoriStatus.setText("Barang Tidak Tersedia");
+                kategoriStatus.setTextColor(ContextCompat.getColor(context, R.color.red));
+            }
 
             TextView kategoriHarga = holder.kategoriHarga;
             DecimalFormat formatter = new DecimalFormat("#,###,###");

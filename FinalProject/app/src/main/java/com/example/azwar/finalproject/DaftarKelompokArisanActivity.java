@@ -49,7 +49,6 @@ public class DaftarKelompokArisanActivity extends AppCompatActivity implements A
         sharedPreference = new SharedPreference();
 
         String periode = sharedPreference.getPeriodeValue(this);
-        Log.d("huhu",periode);
         if(periode != null){
             if(periode.equals("bulanan")){
                 RadioButton radioBulanan = (RadioButton) findViewById(R.id.radio_bulanan);
