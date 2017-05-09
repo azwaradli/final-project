@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,131 +9,71 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:gravity="center">
-
-        <LinearLayout
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:layout_width="0px"
-            android:layout_height="0px"/>
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.8"
-            android:hint="Kata kunci"
-            android:paddingLeft="8dp"
-            android:textSize="14sp"
-            android:textColor="@color/primaryText"
-            android:textColorHint="@color/hintText"/>
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="32dp"
-            android:layout_weight="0.2"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/orangeripple"
-            android:text="cari"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:onClick="cari"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="16dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hasil pencarian"
-            android:textAllCaps="true"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:text="sesuatu"
-            android:textAllCaps="true"
-            android:textStyle="bold"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:padding="16dp"
-            android:clickable="true"
-            android:background="@drawable/cardholderripple"
-            android:onClick="detailBarang">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            android:gravity="center">
+
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_width="0px"
+                android:layout_height="0px"/>
+            <EditText
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nama Barang"
-                    android:textColor="@color/primaryText"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rp 110.000"
-                    android:textColor="@color/secondaryText"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cicilan Rp 22.000/bulan"
-                    android:textColor="@color/secondaryText"/>
-            </LinearLayout>
+                android:layout_weight="0.8"
+                android:hint="Kata kunci"
+                android:paddingLeft="8dp"
+                android:textSize="14sp"
+                android:textColor="@color/primaryText"
+                android:textColorHint="@color/hintText"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_weight="0.2"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/orangeripple"
+                android:text="cari"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:onClick="cari"/>
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:padding="16dp"
-            android:clickable="true"
-            android:background="@drawable/cardholderripple"
-            android:onClick="detailBarang">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <LinearLayout
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="16dp">
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nama Barang"
-                    android:textColor="@color/primaryText"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rp 110.000"
-                    android:textColor="@color/secondaryText"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cicilan Rp 22.000/bulan"
-                    android:textColor="@color/secondaryText"/>
-            </LinearLayout>
+                android:text="Hasil pencarian"
+                android:textAllCaps="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:text="sesuatu"
+                android:textAllCaps="true"
+                android:textStyle="bold"/>
         </LinearLayout>
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp" >
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/hasilPencarianRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical" />
+        </android.support.v4.widget.NestedScrollView>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

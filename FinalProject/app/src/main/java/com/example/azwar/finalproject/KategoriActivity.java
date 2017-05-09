@@ -15,10 +15,10 @@ import java.util.List;
 
 public class KategoriActivity extends AppCompatActivity {
     public static final String BARANG_ID = "barangId";
-    String message;
-    String pageID;
-    String idButton;
-    DatabaseHandler db;
+    private String message;
+    private String pageID;
+    private String idButton;
+    private DatabaseHandler db;
     private RecyclerView mRecyclerView;
     private KategoriAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;

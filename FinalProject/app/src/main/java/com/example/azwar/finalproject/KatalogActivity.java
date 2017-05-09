@@ -52,6 +52,11 @@ public class KatalogActivity extends AppCompatActivity {
 
     public void cari(View view){
         Intent intent = new Intent(this, HasilPencarianActivity.class);
+        if(pageID == null){
+            pageID = "katalogActivity";
+        }
+        intent.putExtra(PAGE_ID, pageID);
+        intent.putExtra(DaftarKelompokArisanActivity.EXTRA_MESSAGE, idButton);
         startActivity(intent);
     }
 }
