@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.azwar.finalproject.TambahUlasanActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="12dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Berikan ulasan untuk Nama Barang"
+            android:textColor="@color/primaryText"/>
+        <EditText
+            android:id="@+id/formPertanyaan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Masukkan ulasan..."
+            android:textSize="14sp"/>
+        <Button
+            android:id="@+id/beriUlasanButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="beri ulasan"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:background="@drawable/orangeripple"/>
+    </LinearLayout>
+</LinearLayout>

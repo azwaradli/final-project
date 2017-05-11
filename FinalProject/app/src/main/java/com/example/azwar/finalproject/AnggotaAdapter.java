@@ -43,7 +43,7 @@ public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaItemView> implem
     @Length(min = 12, message = "Minimum 12 angka")
     private TextView noHpAnggota;
 
-    public AnggotaAdapter(Context context, HashMap keranjangHashMap, Button lanjutButton){
+    public AnggotaAdapter(final Context context, HashMap keranjangHashMap, Button lanjutButton){
         this.context = context;
         this.keranjangHashMap = keranjangHashMap;
 
@@ -58,7 +58,8 @@ public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaItemView> implem
 
             @Override
             public void onClick(View view) {
-                validator.validate();
+//                validator.validate();
+                ((DaftarKelompokArisanActivity)context).finish();
             }
         });
     }
