@@ -19,6 +19,7 @@
             android:text="Masukkan pertanyaan di bawah ini"
             android:textColor="@color/primaryText"/>
         <EditText
+            android:id="@+id/formPertanyaan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Saya ingin bertanya..."

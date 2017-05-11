@@ -1,21 +1,15 @@
 package com.example.azwar.finalproject;
 
-import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.LinearGradient;
-import android.service.notification.StatusBarNotification;
 import android.util.Log;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -104,9 +98,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + ")";
 
     private static final String CREATE_PERTANYAAN_TABLE = "CREATE TABLE " + TABLE_PERTANYAAN + "("
-            + KEY_ID + "INTEGER PRIMARY KEY, "
-            + KEY_ID_BARANG + "INTEGER, "
-            + KEY_PERTANYAAN + " TEXT"
+            + KEY_ID + " INTEGER PRIMARY KEY, "
+            + KEY_ID_BARANG + " INTEGER, "
+            + KEY_PERTANYAAN + " TEXT, "
             + "FOREIGN KEY (" + KEY_ID_BARANG + ") REFERENCES " + TABLE_BARANG + "(" + KEY_ID + ")"
             + ")";
 
@@ -120,6 +114,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_ANGGOTA_ARISAN_TABLE);
         db.execSQL(CREATE_BARANG_TABLE);
         db.execSQL(CREATE_KERANJANG_TABLE);
+        db.execSQL(CREATE_PERTANYAAN_TABLE);
     }
 
     @Override
@@ -129,6 +124,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ANGGOTA_ARISAN);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BARANG);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_KERANJANG);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PERTANYAAN);
 
 //        if(newVersion > oldVersion){
 //            db.execSQL("ALTER TABLE " + TABLE_BARANG + " ADD COLUMN " + KEY_STOK + " INTEGER DEFAULT 0");
@@ -723,8 +719,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return pertanyaan;
     }
 
-    public List<Barang> getAllPertanyaan() throws ParseException {
-        List<Barang> pertanyaanList = new ArrayList<Barang>();
+    public List<Pertanyaan> getAllPertanyaan() throws ParseException {
+        List<Pertanyaan> pertanyaanList = new ArrayList<>();
 
         // select all query
         String selectQuery = "SELECT * FROM " + TABLE_BARANG;
@@ -748,8 +744,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return pertanyaanList;
     }
 
-    public List<Barang> getAllBarang(int idBarang) throws ParseException {
-        List<Barang> pertanyaanList = new ArrayList<Barang>();
+    public List<Pertanyaan> getAllPertanyaan(int idBarang) throws ParseException {
+        List<Pertanyaan> pertanyaanList = new ArrayList<>();
 
         // select all query
         String selectQuery = "SELECT * FROM " + TABLE_PERTANYAAN + " WHERE "
@@ -776,6 +772,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public int getPertanyaanCount(){
         String countQuery = "SELECT * FROM " + TABLE_PERTANYAAN;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int count = cursor.getCount();
+        cursor.close();
+
+        return count;
+    }
+
+    public int getPertanyaanCount(int idBarang){
+        String countQuery = "SELECT * FROM " + TABLE_PERTANYAAN + " WHERE "
+                + KEY_ID_BARANG + " = " + idBarang;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
         int count = cursor.getCount();
