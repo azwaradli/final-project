@@ -41,9 +41,7 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriItemView> {
     @Override
     public void onBindViewHolder(KategoriItemView holder, int position) {
         if (barangList != null) {
-            Log.d("hasil","berhasil");
             LinearLayout kategoriLayout = holder.kategoriLayout;
-            Log.d("barang id",""+barangList.get(position).getId());
             kategoriLayout.setTag(barangList.get(position).getId());
 
             TextView kategoriNama = holder.kategoriNama;
@@ -66,9 +64,6 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriItemView> {
             String setoran = formatter.format(cicilan);
             setoran = setoran.replace(',', '.');
             kategoriCicilan.setText("Cicilan Rp "+setoran+"/bulan");
-        }
-        else {
-            Log.d("hasil","gagal");
         }
     }
 
