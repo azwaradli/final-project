@@ -53,7 +53,8 @@
             android:background="@drawable/orangeripple"
             android:onClick="pilihBarang"
             android:text="Pilih Barang"
-            android:textSize="16sp"
+            android:textSize="15sp"
+            android:textStyle="bold"
             android:visibility="gone"/>
 
         <LinearLayout

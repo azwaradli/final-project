@@ -57,13 +57,13 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriItemView> {
             DecimalFormat formatter = new DecimalFormat("#,###,###");
             String harga = formatter.format(barangList.get(position).getHarga());
             harga = harga.replace(',', '.');
-            kategoriHarga.setText("Rp "+harga);
+            kategoriHarga.setText("harga total Rp "+harga);
 
             TextView kategoriCicilan = holder.kategoriCicilan;
             int cicilan = barangList.get(position).getHarga()/5;
             String setoran = formatter.format(cicilan);
             setoran = setoran.replace(',', '.');
-            kategoriCicilan.setText("Cicilan Rp "+setoran+"/bulan");
+            kategoriCicilan.setText("Setoran Rp "+setoran+"/bulan");
         }
     }
 

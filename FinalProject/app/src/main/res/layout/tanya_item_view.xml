@@ -11,7 +11,6 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="12dp"
             android:src="@mipmap/ic_launcher" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,7 +32,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="satu menit  lalu" />
+                    android:text="satu menit yang lalu" />
 
                 <TextView
                     android:id="@+id/isiPertanyaan"

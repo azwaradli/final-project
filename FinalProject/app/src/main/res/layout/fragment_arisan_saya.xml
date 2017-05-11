@@ -24,6 +24,7 @@
                 android:onClick="buatKelompokArisan"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/arisanHolder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -75,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:background="@color/colorPrimary">
+                android:background="@drawable/greenripple">
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
