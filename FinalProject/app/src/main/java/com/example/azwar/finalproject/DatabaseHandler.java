@@ -35,6 +35,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_ANGGOTA_ARISAN = "anggota_arisan";
     private static final String TABLE_BARANG = "barang";
     private static final String TABLE_KERANJANG = "keranjang";
+    private static final String TABLE_PERTANYAAN = "pertanyaan";
 
     // Common column names
     private static final String KEY_ID = "id";
@@ -62,6 +63,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // KERANJANG Table - column names
     private static final String KEY_ID_BUTTON = "id_button";
     private static final String KEY_ID_BARANG = "id_barang";
+
+    // PERTANYAAN Table - column names
+    private static final String KEY_PERTANYAAN = "pertanyaan";
 
     private static final String CREATE_KELOMPOK_ARISAN_TABLE = "CREATE TABLE " + TABLE_KELOMPOK_ARISAN + "("
             + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
@@ -92,11 +96,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + KEY_SPESIFIKASI + " TEXT"
             + ")";
 
-    public static final String CREATE_KERANJANG_TABLE = "CREATE TABLE " + TABLE_KERANJANG + "("
+    private static final String CREATE_KERANJANG_TABLE = "CREATE TABLE " + TABLE_KERANJANG + "("
             + KEY_ID + " INTEGER PRIMARY KEY, "
             + KEY_ID_BUTTON + " INTEGER, "
             + KEY_ID_BARANG + " INTEGER, "
-            + "FOREIGN KEY (" + KEY_ID_BARANG+ ") REFERENCES " + TABLE_BARANG+ "(" + KEY_ID + ")"
+            + "FOREIGN KEY (" + KEY_ID_BARANG + ") REFERENCES " + TABLE_BARANG + "(" + KEY_ID + ")"
+            + ")";
+
+    private static final String CREATE_PERTANYAAN_TABLE = "CREATE TABLE " + TABLE_PERTANYAAN + "("
+            + KEY_ID + "INTEGER PRIMARY KEY, "
+            + KEY_ID_BARANG + "INTEGER, "
+            + KEY_PERTANYAAN + " TEXT"
+            + "FOREIGN KEY (" + KEY_ID_BARANG + ") REFERENCES " + TABLE_BARANG + "(" + KEY_ID + ")"
             + ")";
 
     public DatabaseHandler(Context context){
@@ -119,9 +130,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BARANG);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_KERANJANG);
 
-        if(newVersion > oldVersion){
-            db.execSQL("ALTER TABLE " + TABLE_BARANG + " ADD COLUMN " + KEY_STOK + " INTEGER DEFAULT 0");
-        }
+//        if(newVersion > oldVersion){
+//            db.execSQL("ALTER TABLE " + TABLE_BARANG + " ADD COLUMN " + KEY_STOK + " INTEGER DEFAULT 0");
+//        }
 
         // Create tables again
         onCreate(db);
@@ -671,6 +682,136 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void deleteAllKeranjang(){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_KERANJANG, null, null);
+        db.close();
+    }
+
+    public long addPertanyaan(Pertanyaan pertanyaan){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID_BARANG, pertanyaan.getIdBarang());
+        values.put(KEY_PERTANYAAN, pertanyaan.getPertanyaan());
+
+        long id = db.insert(TABLE_PERTANYAAN, null, values);
+        db.close();
+
+        return id;
+    }
+
+    public Pertanyaan getPertanyaan(int id) throws ParseException {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT * FROM " + TABLE_PERTANYAAN + " WHERE "
+                + KEY_ID + " = " + id;
+
+        Log.d("query", selectQuery);
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        Pertanyaan pertanyaan= null;
+
+        if (cursor.getCount() != 0){
+            cursor.moveToFirst();
+            pertanyaan = new Pertanyaan(
+                    Integer.parseInt(cursor.getString(0)),
+                    Integer.parseInt(cursor.getString(1)),
+                    cursor.getString(3)
+            );
+        }
+        cursor.close();
+
+        return pertanyaan;
+    }
+
+    public List<Barang> getAllPertanyaan() throws ParseException {
+        List<Barang> pertanyaanList = new ArrayList<Barang>();
+
+        // select all query
+        String selectQuery = "SELECT * FROM " + TABLE_BARANG;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                Pertanyaan pertanyaan = new Pertanyaan();
+                pertanyaan.setId(Integer.parseInt(cursor.getString(0)));
+                pertanyaan.setIdBarang(Integer.parseInt(cursor.getString(1)));
+                pertanyaan.setPertanyaan(cursor.getString(2));
+
+                pertanyaanList.add(pertanyaan);
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return pertanyaanList;
+    }
+
+    public List<Barang> getAllBarang(int idBarang) throws ParseException {
+        List<Barang> pertanyaanList = new ArrayList<Barang>();
+
+        // select all query
+        String selectQuery = "SELECT * FROM " + TABLE_PERTANYAAN + " WHERE "
+                + KEY_ID_BARANG + " = " + idBarang;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                Pertanyaan pertanyaan = new Pertanyaan();
+                pertanyaan.setId(Integer.parseInt(cursor.getString(0)));
+                pertanyaan.setIdBarang(Integer.parseInt(cursor.getString(1)));
+                pertanyaan.setPertanyaan(cursor.getString(2));
+
+                pertanyaanList.add(pertanyaan);
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return pertanyaanList;
+    }
+
+    public int getPertanyaanCount(){
+        String countQuery = "SELECT * FROM " + TABLE_PERTANYAAN;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int count = cursor.getCount();
+        cursor.close();
+
+        return count;
+    }
+
+    public int updatePertanyaan(Pertanyaan pertanyaan){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID_BARANG, pertanyaan.getIdBarang());
+        values.put(KEY_HARGA, pertanyaan.getPertanyaan());
+
+        return db.update(
+                TABLE_PERTANYAAN,
+                values,
+                KEY_ID + " ?",
+                new String[] {String.valueOf(pertanyaan.getId())}
+        );
+    }
+
+    public void deletePertanyaan(Pertanyaan pertanyaan){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(
+                TABLE_PERTANYAAN,
+                KEY_ID + " = ?",
+                new String[] {String.valueOf(pertanyaan.getId())}
+        );
+        db.close();
+    }
+
+    public void deleteAllPertanyaan(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_PERTANYAAN, null, null);
         db.close();
     }
 
