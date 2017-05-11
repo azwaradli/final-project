@@ -13,6 +13,7 @@
             android:label="Arisan Barang">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -44,6 +45,10 @@
             android:name=".TambahPertanyaanActivity"
             android:label="Tambah Pertanyaan"
             android:parentActivityName=".DetailBarangActivity" />
+        <activity
+            android:name=".DetailArisanActivity"
+            android:label="Detail Arisan"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>
