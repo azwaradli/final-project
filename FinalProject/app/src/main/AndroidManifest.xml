@@ -20,8 +20,7 @@
         <activity
             android:name=".DaftarKelompokArisanActivity"
             android:label="Daftar Kelompok Arisan"
-            android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".KategoriActivity"
             android:label="Kategori"

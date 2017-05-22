@@ -1,5 +1,6 @@
 package com.example.azwar.finalproject;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.icu.text.IDNA;
@@ -103,6 +104,7 @@ public class DetailBarangActivity extends AppCompatActivity {
                             db.deleteKeranjang(idButton);
                             db.addKeranjang(idButton,idBarang);
                             startActivity(intent);
+                            finish();
                         }
                     });
             alertDialogBuilder.setNegativeButton("Tidak",
@@ -119,6 +121,7 @@ public class DetailBarangActivity extends AppCompatActivity {
         else{
             startActivity(intent);
             db.addKeranjang(idButton, idBarang);
+            finish();
         }
 
         db.closeDB();

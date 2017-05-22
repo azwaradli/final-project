@@ -47,7 +47,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Icing dessert cupcake brownie sweet roll macaroon. Tart pie candy pastry gummies apple pie icing chocolate bar. Apple pie donut biscuit lemon drops."
+                        android:text="Barang sudah diterima. barang sesuai dengan pesanan. Terima kasih."
                         android:textColor="@color/primaryText" />
                 </LinearLayout>
 
@@ -77,12 +77,13 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:paddingRight="8dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nama Pengulas"
-                        android:textStyle="bold"
-                        android:textColor="@color/primaryText" />
+                        android:textColor="@color/primaryText"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -94,7 +95,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Icing dessert cupcake brownie sweet roll macaroon. Tart pie candy pastry gummies apple pie icing chocolate bar. Apple pie donut biscuit lemon drops."
+                        android:text="Barangnya cepat sekali sampainya. Bentuknya juga sesuai. Puas banget."
                         android:textColor="@color/primaryText" />
                 </LinearLayout>
 
@@ -142,7 +143,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Icing dessert cupcake brownie sweet roll macaroon. Tart pie candy pastry gummies apple pie icing chocolate bar. Apple pie donut biscuit lemon drops."
+                        android:text="Barangnya kok tidak sesuai dengan yang ada di katalog ya? mengecewakan"
                         android:textColor="@color/primaryText" />
                 </LinearLayout>
 

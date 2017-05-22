@@ -551,6 +551,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Barang barang8 = new Barang("Kemeja Wanita Swiss Biru", 125000, "PAKAIAN WANITA-01", 10, "Kemeja berwarna biru cerah ini sangat cocok untuk kamu yang ingin bergaya rapih. Terbuat dari bahan spandex yang dengan karakteristik ringan dan lembut membuatmu selalu terlihat elegan", "Bahan: Spandex\nPanjang: 65cm\nLingkar dada: fit to 100 cm");
         Barang barang9 = new Barang("Dandang Alcor 24cm Bronzo", 99500, "PERALATAN MASAK-02", 10, "Dandang serbaguna berdiameter 24cm ini sangat cocok untuk mengukus berbagai jenis makanan. Dilengkapi dengan fitur anti karat dan anti lengket membuat dandang ini lebih mudah dibersihkan", "Ukuran: Diameter 24cm\nMaterial: Alumunium");
         Barang barang10 = new Barang("Orchid Panci Serbaguna", 129500, "PERALATAN MASAK-03", 10, "Panci serbaguna berdameter 24cm dapat digunakan untuk berbagai kegiatan mengukus dan merebus segala jenis makanan", "Kukus, rebus\nDiameter: 24cm\nKapasitas: 7L (air)");
+        Barang barang11 = new Barang("Shinta Lemari Plastik Cokelat 4 Susun", 259500, "PRODUK TERBARU-01", 10, "Lemari laci berbahan plastik warna cokelat ini terdiri dari 4 susun laci yang dapa memuat beragam keperluan di rumah.", "Bahan: Plastik\nDimensi: 48x43x89cm");
+        Barang barang12 = new Barang("Shinta Sauce Pan", 89500, "PRODUK TERBARU-01", 10, "Panci yang disertai tutup ini sangat cocok bagi Anda yang gemar memasak rebusan dalam jumlah sedikit", "Ukuran: Diameter 18cm\nBahan: Alumunium");
+        Barang barang13 = new Barang("Fidela Set Pisau Dapur", 155000, "PRODUK TERBARU-01", 10, "Fidela Pisau Set memiliki warna yang ceria membuat hari-hari anda dalam memotong bahan makanan apapun menjadi lebih semangat.", "Bahan: Stainless Steel\nKelengkapan: 1 pcs Pisau Chef 12cm, 1 pcs Pisau Roti 12.5cm, 1 pcs Pisau Daging 10cm, 1 pcs Pisau Serbagugna 9.5cm, 1 pcs Pisau Paring 7.5cm, 1 pcs Gunting 8.5cm\nDimensi: 35x12x9cm\nBerat: 2kg\nWarna sesuai stock yang tersedia");
+        Barang barang14 = new Barang("Nicer Dicer Pemotong Serbaguna", 159500, "PRODUK TERBARU-02", 0, "Memotong aneka sayuran bahan makanan dengan mudah tanpa harus membuang banyak waktu dan tenaga. Berbagai jenis potongan dan bentuk makanan dapat dihasilkan hanya dengan 1 alat.", "Bahan: Plastik ABS\n11 macam variasi potongan");
+        Barang barang15 = new Barang("Quantum Kompor Gas 1 Tungku", 209500, "PRODUK TERBARU-03", 10, "Quantum Kompor Gas 1 Tungku mempunyai desain elegan dengan warna putih yang cantik. Praktis dan cocok untuk ditempatkan di pantry, kontrakan, kos, apartemen, dan lainnya. Kompor mini yang bisa memberikan kualitas dan kualifikasi yang baik. Satu tungku dengan empat penyangga membuat setiap perabotan masak berdiri dengan seimbang. Pemantik mekanik mempermudah setiap menyalakan maupun mematikan kompor.", "Dimensi: 30x40x13cm\nMaterial: Burner Kuningan\nBerat: 2.78 kg");
 
         db.addBarang(barang1);
         db.addBarang(barang2);
@@ -562,6 +567,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.addBarang(barang8);
         db.addBarang(barang9);
         db.addBarang(barang10);
+        db.addBarang(barang11);
+        db.addBarang(barang12);
+        db.addBarang(barang13);
+        db.addBarang(barang14);
+        db.addBarang(barang15);
     }
 
     public long addKeranjang(int buttonId, int barangId){

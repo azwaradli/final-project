@@ -34,7 +34,7 @@
         </android.support.v4.widget.NestedScrollView>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="wrap_content"
@@ -70,7 +70,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Icing dessert cupcake brownie sweet roll macaroon. Tart pie candy pastry gummies apple pie icing chocolate bar. Apple pie donut biscuit lemon drops."
+                        android:text="Pilihan warnanya ada apa saja ya?"
                         android:textColor="@color/primaryText" />
                 </LinearLayout>
                 <LinearLayout
@@ -102,7 +102,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:textColor="@color/primaryText"
-                            android:text="Donut apple pie carrot cake donut chocolate bar sesame snaps caramels tootsie roll carrot cake. Oat cake marshmallow fruitcake fruitcake gummies liquorice. Tiramisu muffin cake pastry."/>
+                            android:text="Warna yang tersedia warna pelangi :)"/>
                     </LinearLayout>
                 </LinearLayout>
                 <View
@@ -148,7 +148,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Icing dessert cupcake brownie sweet roll macaroon. Tart pie candy pastry gummies apple pie icing chocolate bar. Apple pie donut biscuit lemon drops."
+                        android:text="Saya pesan barang ini tapi belum sampai juga. Kira2 kapan sampainya?"
                         android:textColor="@color/primaryText" />
                 </LinearLayout>
 
@@ -175,7 +175,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:paddingRight="8dp">
@@ -196,7 +196,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Icing dessert cupcake brownie sweet roll macaroon. Tart pie candy pastry gummies apple pie icing chocolate bar. Apple pie donut biscuit lemon drops."
+                        android:text="Apakah ada variasi barang lain?"
                         android:textColor="@color/primaryText" />
                 </LinearLayout>
 

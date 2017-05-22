@@ -35,14 +35,14 @@ public class TambahPertanyaanActivity extends AppCompatActivity {
         tanyaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                final String isiPertanyaan = formPertanyaan.getText().toString();
-                final Pertanyaan pertanyaan = new Pertanyaan(idBarang, isiPertanyaan);
-
                 alertDialogBuilder.setMessage("Apakah Anda yakin ingin menanyakan pertanyaan ini?");
                 alertDialogBuilder.setPositiveButton("Ya",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                String isiPertanyaan = formPertanyaan.getText().toString();
+                                Pertanyaan pertanyaan = new Pertanyaan(idBarang, isiPertanyaan);
+
                                 db.addPertanyaan(pertanyaan);
                                 int count = db.getPertanyaanCount(idBarang);
 //                                Toast.makeText(v.getContext(), ""+count, Toast.LENGTH_SHORT).show();

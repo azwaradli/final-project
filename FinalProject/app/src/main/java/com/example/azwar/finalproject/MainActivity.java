@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
             idButton = intent.getStringExtra(DaftarKelompokArisanActivity.EXTRA_MESSAGE);
         }
 
-//        DatabaseHandler db = new DatabaseHandler(this);
-//        db.deleteAllKeranjang();
+        DatabaseHandler db = new DatabaseHandler(this);
+        db.deleteAllPertanyaan();
 
         BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {

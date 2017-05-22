@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="Berikan ulasan untuk Nama Barang"
+            android:text="Berikan ulasan untuk Panci Serbaguna"
             android:textColor="@color/primaryText"/>
         <EditText
             android:id="@+id/formPertanyaan"

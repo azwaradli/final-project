@@ -13,6 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.azwar.finalproject.AnggotaItemView;
+import com.example.azwar.finalproject.Barang;
+import com.example.azwar.finalproject.DaftarKelompokArisanActivity;
+import com.example.azwar.finalproject.R;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Length;
@@ -59,7 +63,7 @@ public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaItemView> implem
             @Override
             public void onClick(View view) {
 //                validator.validate();
-                ((DaftarKelompokArisanActivity)context).finish();
+                ((DaftarKelompokArisanActivity) context).finish();
             }
         });
     }
