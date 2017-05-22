@@ -57,16 +57,6 @@ public class KategoriActivity extends AppCompatActivity {
 //            Log.d("barang log", log);
         }
 
-//        Log.d("add id",""+id);
-
-//        Barang barang = null;
-//        try {
-//            barang = db.getBarang((int) id);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        Log.d("cek barang", barang.getNama());
-
         mRecyclerView = (RecyclerView) findViewById(R.id.kategoriRecyclerView);
         mRecyclerView.setNestedScrollingEnabled(false);
         mLayoutManager = new LinearLayoutManager(this);
@@ -90,5 +80,9 @@ public class KategoriActivity extends AppCompatActivity {
         intent.putExtra(BARANG_ID, idBarang);
         intent.putExtra(DaftarKelompokArisanActivity.EXTRA_MESSAGE, idButton);
         startActivity(intent);
+    }
+
+    public interface KatalogActivityListener{
+        void closeActivity();
     }
 }

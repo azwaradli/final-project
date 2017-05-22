@@ -103,6 +103,7 @@ public class DetailBarangActivity extends AppCompatActivity {
 //                            Toast.makeText(getApplicationContext(), "Ya", Toast.LENGTH_LONG).show();
                             db.deleteKeranjang(idButton);
                             db.addKeranjang(idButton,idBarang);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                             finish();
                         }
@@ -119,6 +120,7 @@ public class DetailBarangActivity extends AppCompatActivity {
             alertDialog.show();
         }
         else{
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             db.addKeranjang(idButton, idBarang);
             finish();

@@ -16,6 +16,7 @@ public class KatalogActivity extends AppCompatActivity {
     private KatalogAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private String idButton;
+    private boolean clear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,5 +59,9 @@ public class KatalogActivity extends AppCompatActivity {
         intent.putExtra(PAGE_ID, pageID);
         intent.putExtra(DaftarKelompokArisanActivity.EXTRA_MESSAGE, idButton);
         startActivity(intent);
+    }
+
+    public interface KatalogActivityListener{
+        void closeActivity();
     }
 }
