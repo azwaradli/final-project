@@ -767,7 +767,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         // select all query
         String selectQuery = "SELECT * FROM " + TABLE_PERTANYAAN + " WHERE "
-                + KEY_ID_BARANG + " = " + idBarang;
+                + KEY_ID_BARANG + " = " + idBarang + " ORDER BY " + KEY_ID + " DESC";
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
