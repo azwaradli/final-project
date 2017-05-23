@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DetailBarangActivity extends AppCompatActivity {
+    private static final String ON_REFRESH = "onRefresh";
     private TabLayout tabLayout;
     private String message;
     private int idBarang;
@@ -74,6 +75,16 @@ public class DetailBarangActivity extends AppCompatActivity {
 
             }
         });
+
+        if (intent.hasExtra(DetailBarangActivity.ON_REFRESH)) {
+            viewPager.setCurrentItem(2);
+        }
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+
     }
 
     @Override
@@ -135,5 +146,19 @@ public class DetailBarangActivity extends AppCompatActivity {
 
     public int getIdBarang(){
         return idBarang;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            Intent refresh = new Intent(this, DetailBarangActivity.class);
+            refresh.putExtra(KatalogActivity.PAGE_ID, message);
+            refresh.putExtra(KategoriActivity.BARANG_ID, String.valueOf(idBarang));
+            refresh.putExtra(DaftarKelompokArisanActivity.EXTRA_MESSAGE, String.valueOf(idButton));
+            refresh.putExtra(ON_REFRESH, true);
+            startActivity(refresh);
+            this.finish();
+        }
     }
 }

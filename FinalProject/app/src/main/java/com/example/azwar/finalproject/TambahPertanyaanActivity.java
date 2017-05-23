@@ -46,6 +46,7 @@ public class TambahPertanyaanActivity extends AppCompatActivity {
                                 db.addPertanyaan(pertanyaan);
                                 int count = db.getPertanyaanCount(idBarang);
 //                                Toast.makeText(v.getContext(), ""+count, Toast.LENGTH_SHORT).show();
+                                setResult(RESULT_OK, null);
                                 finish();
                             }
                         });

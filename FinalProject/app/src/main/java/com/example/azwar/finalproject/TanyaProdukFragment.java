@@ -46,7 +46,7 @@ public class TanyaProdukFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(container.getContext(), TambahPertanyaanActivity.class);
                 intent.putExtra(EXTRA_MESSAGE, idBarang);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
 
