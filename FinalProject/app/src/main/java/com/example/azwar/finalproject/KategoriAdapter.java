@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,6 +23,24 @@ import java.util.List;
 public class KategoriAdapter extends RecyclerView.Adapter<KategoriItemView> {
     private List<Barang> barangList;
     private Context context;
+
+    private int[] gambarDetail = {
+            R.drawable.shinta_lemari_plastik_4_susun,
+            R.drawable.shinta_sauce_pan,
+            R.drawable.fidela_set_pisau,
+            R.drawable.nicer_dicer_pemotong_serbaguna,
+            R.drawable.quantum_kompor_gas_1_tungku,
+            R.drawable.cosmos_rice_box,
+            R.drawable.kemeja_wanita_swiss_biru,
+            R.drawable.kemeja_wanita_swiss_biru,
+            R.drawable.dandang_alcor_24cm_bronzo,
+            R.drawable.orchid_panci_serbaguna,
+            R.drawable.fidela_set_pisau,
+            R.drawable.fidela_set_pisau,
+            R.drawable.fidela_set_pisau,
+            R.drawable.fidela_set_pisau,
+            R.drawable.fidela_set_pisau
+    };
 
     public KategoriAdapter(List<Barang> barangList) {
         this.barangList = barangList;
@@ -43,6 +62,9 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriItemView> {
         if (barangList != null) {
             LinearLayout kategoriLayout = holder.kategoriLayout;
             kategoriLayout.setTag(barangList.get(position).getId());
+
+            ImageView kategoriGambar = holder.kategoriGambar;
+            kategoriGambar.setImageResource(gambarDetail[barangList.get(position).getId()-1]);
 
             TextView kategoriNama = holder.kategoriNama;
             kategoriNama.setText(barangList.get(position).getNama());

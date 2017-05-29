@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,24 @@ import java.text.ParseException;
 
 public class InformasiProdukFragment extends Fragment {
     DatabaseHandler db;
+
+    private int[] gambarDetail = {
+            R.drawable.shinta_lemari_plastik_4_susun,
+            R.drawable.shinta_sauce_pan,
+            R.drawable.fidela_set_pisau,
+            R.drawable.nicer_dicer_pemotong_serbaguna,
+            R.drawable.quantum_kompor_gas_1_tungku,
+            R.drawable.cosmos_rice_box,
+            R.drawable.kemeja_wanita_swiss_biru,
+            R.drawable.kemeja_wanita_swiss_biru,
+            R.drawable.dandang_alcor_24cm_bronzo,
+            R.drawable.orchid_panci_serbaguna,
+            R.drawable.fidela_set_pisau,
+            R.drawable.fidela_set_pisau,
+            R.drawable.fidela_set_pisau,
+            R.drawable.fidela_set_pisau,
+            R.drawable.fidela_set_pisau
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,6 +84,9 @@ public class InformasiProdukFragment extends Fragment {
         }
         else
             Log.d("hasil get","gagal");
+
+        ImageView gambarBarang = (ImageView) view.findViewById(R.id.gambarBarang);
+        gambarBarang.setImageResource(gambarDetail[idBarang-1]);
 
         TextView namaBarang = (TextView) view.findViewById(R.id.namaBarang);
         namaBarang.setText(barang.getNama());
