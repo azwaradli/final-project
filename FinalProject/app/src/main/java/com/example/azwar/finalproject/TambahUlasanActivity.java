@@ -1,6 +1,7 @@
 package com.example.azwar.finalproject;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ public class TambahUlasanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambah_ulasan);
 
+        final Intent intent = new Intent(this, DetailArisanIsiActivity.class);
+
         alertDialogBuilder = new AlertDialog.Builder(this);
 
         beriUlasanButton = (Button) findViewById(R.id.beriUlasanButton);
@@ -28,6 +31,8 @@ public class TambahUlasanActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
                                 finish();
                             }
                         });

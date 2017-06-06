@@ -51,7 +51,10 @@
         <activity
             android:name=".TambahUlasanActivity"
             android:label="Tambah Ulasan"
-            android:parentActivityName=".DetailArisanActivity"/>
+            android:parentActivityName=".DetailArisanActivity" />
+        <activity android:name=".DetailArisanIsiActivity"
+            android:label="Detail Arisan"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
